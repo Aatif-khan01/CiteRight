@@ -62,16 +62,31 @@ public class ImportExportService {
         }
     }
 
-    // === IMPORT ===
+    // === IMPORT (using robust jbibtex-powered services) ===
+
+    private final BibTeXImportService bibImporter = new BibTeXImportService();
+    private final RISImportService risImporter = new RISImportService();
 
     public List<Publication> importFromBibTeX(File file) throws IOException {
-        String content = readFile(file);
-        return parseBibTeX(content);
+        try {
+            // Use jbibtex-powered service for robust parsing
+            return bibImporter.importFromFile(file.toPath());
+        } catch (Exception e) {
+            System.err.println("[Import] jbibtex parser failed, falling back to legacy: " + e.getMessage());
+            // Fallback to legacy regex parser
+            String content = readFile(file);
+            return parseBibTeX(content);
+        }
     }
 
     public List<Publication> importFromRIS(File file) throws IOException {
-        String content = readFile(file);
-        return parseRIS(content);
+        try {
+            return risImporter.importFromFile(file.toPath());
+        } catch (Exception e) {
+            System.err.println("[Import] RIS parser failed, falling back to legacy: " + e.getMessage());
+            String content = readFile(file);
+            return parseRIS(content);
+        }
     }
 
     /**

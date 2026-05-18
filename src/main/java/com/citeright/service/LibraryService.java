@@ -27,16 +27,19 @@ public class LibraryService {
 
     public void saveToLibrary(Publication paper, int collectionId) {
         libraryDAO.saveToLibrary(paper, collectionId);
+        BibSyncService.getInstance().notifyChange();
     }
 
     public void saveToDefaultCollection(Publication paper) {
         List<Collection> collections = collectionDAO.getAll();
         int defaultId = collections.isEmpty() ? 1 : collections.get(0).getId();
         libraryDAO.saveToLibrary(paper, defaultId);
+        BibSyncService.getInstance().notifyChange();
     }
 
     public void removeFromLibrary(int paperId) {
         libraryDAO.removeFromLibrary(paperId);
+        BibSyncService.getInstance().notifyChange();
     }
 
     public boolean isInLibrary(String paperId) {

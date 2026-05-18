@@ -7,6 +7,8 @@ import com.citeright.nlp.TextRankSummarizer;
 import com.citeright.nlp.TfIdfEngine;
 import com.citeright.service.LibraryService;
 import com.citeright.service.PdfService;
+import com.citeright.service.MetadataEnrichmentService;
+import com.citeright.service.CitationStyleManager;
 import javafx.application.Platform;
 import javafx.geometry.*;
 import javafx.scene.control.*;
@@ -186,6 +188,29 @@ public class DetailPanel extends VBox {
                 content.getChildren().add(doiRow);
             }
 
+            // ── ENRICH METADATA BUTTON ────────────────────────────────────────
+            Button enrichBtn = new Button("🔍 Enrich Metadata via DOI");
+            enrichBtn.setStyle(
+                    "-fx-background-color: #f0edff; -fx-text-fill: #5a6cf5; -fx-font-size: 11px; " +
+                    "-fx-font-weight: bold; -fx-padding: 5 14; -fx-background-radius: 8; -fx-cursor: hand;");
+            enrichBtn.setMaxWidth(Double.MAX_VALUE);
+            enrichBtn.setOnAction(e -> {
+                enrichBtn.setDisable(true);
+                enrichBtn.setText("⏳ Enriching...");
+                MetadataEnrichmentService enricher = new MetadataEnrichmentService();
+                enricher.enrichAsync(pub,
+                    enrichedPub -> {
+                        libraryService.updateMetadata(currentEntry.getId(), enrichedPub);
+                        enrichBtn.setText("✅ Metadata Updated!");
+                        renderContent(); // Refresh the panel
+                    },
+                    error -> {
+                        enrichBtn.setText("⚠️ " + error);
+                        enrichBtn.setDisable(false);
+                    });
+            });
+            content.getChildren().add(enrichBtn);
+
             content.getChildren().add(new Separator());
 
             // ── CITATION ────────────────────────────────────────────────────────
@@ -196,8 +221,13 @@ public class DetailPanel extends VBox {
             citRow.setAlignment(Pos.CENTER_LEFT);
 
             citationFormatCombo = new ComboBox<>();
-            citationFormatCombo.getItems().addAll("APA", "IEEE", "MLA", "Harvard", "BibTeX");
-            citationFormatCombo.setValue("APA");
+            CitationStyleManager csm = CitationStyleManager.getInstance();
+            for (String styleId : csm.getAvailableStyles()) {
+                citationFormatCombo.getItems().add(csm.getDisplayName(styleId));
+            }
+            // Also keep legacy export formats
+            citationFormatCombo.getItems().addAll("BibTeX", "RIS");
+            citationFormatCombo.setValue("APA 7th Edition");
             citationFormatCombo.setStyle("-fx-font-size: 11px;");
             citationFormatCombo.setOnAction(e -> updateCitation());
 
@@ -581,15 +611,34 @@ public class DetailPanel extends VBox {
 
     private void updateCitation() {
         if (currentEntry == null || currentEntry.getPublication() == null || citationFormatCombo == null) return;
-        String fmt = citationFormatCombo.getValue();
-        CitationFormatter formatter = switch (fmt) {
-            case "IEEE"    -> new IEEEFormatter();
-            case "MLA"     -> new MLAFormatter();
-            case "Harvard" -> new HarvardFormatter();
-            case "BibTeX"  -> new BibTeXFormatter();
-            default        -> new APAFormatter();
-        };
-        citationArea.setText(formatter.format(currentEntry.getPublication()));
+        String displayName = citationFormatCombo.getValue();
+        Publication pub = currentEntry.getPublication();
+
+        // Legacy export formats
+        if ("BibTeX".equals(displayName)) {
+            citationArea.setText(new BibTeXFormatter().format(pub));
+            return;
+        }
+        if ("RIS".equals(displayName)) {
+            citationArea.setText(new RISFormatter().format(pub));
+            return;
+        }
+
+        // CSL-powered formatting
+        CitationStyleManager csm = CitationStyleManager.getInstance();
+        // Reverse-lookup the style ID from the display name
+        String styleId = null;
+        for (String id : csm.getAvailableStyles()) {
+            if (csm.getDisplayName(id).equals(displayName)) {
+                styleId = id;
+                break;
+            }
+        }
+        if (styleId == null) {
+            // Fallback: try display name directly as style ID
+            styleId = displayName.toLowerCase().replace(" ", "-");
+        }
+        citationArea.setText(csm.formatCitation(pub, styleId));
     }
 
     /** Persists any pending notes before the view changes. */

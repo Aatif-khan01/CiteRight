@@ -572,7 +572,7 @@ public class SearchPane extends VBox {
             extractBtn.setDisable(true);
             extractBtn.setText("⏳ Extracting...");
             new Thread(() -> {
-                String claim = searchInput.getText().trim();
+                String claim = inputArea.getText().trim();
                 com.citeright.ai.GeminiAIService ai = new com.citeright.ai.GeminiAIService();
                 String evidence = ai.extractEvidence(claim, pub);
                 javafx.application.Platform.runLater(() -> {

@@ -70,6 +70,34 @@
             <artifactId>pdfbox</artifactId>
             <version>3.0.1</version>
         </dependency>
+
+        <!-- citeproc-java — Pure-Java CSL citation processor -->
+        <dependency>
+            <groupId>de.undercouch</groupId>
+            <artifactId>citeproc-java</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
+        <!-- CSL Styles — Bundled citation styles (APA, MLA, IEEE, etc.) -->
+        <dependency>
+            <groupId>org.citationstyles</groupId>
+            <artifactId>styles</artifactId>
+            <version>26.2</version>
+        </dependency>
+
+        <!-- CSL Locales — Language-specific date/term translations -->
+        <dependency>
+            <groupId>org.citationstyles</groupId>
+            <artifactId>locales</artifactId>
+            <version>26.2</version>
+        </dependency>
+
+        <!-- JBibTeX — Robust BibTeX parser and writer -->
+        <dependency>
+            <groupId>org.jbibtex</groupId>
+            <artifactId>jbibtex</artifactId>
+            <version>1.0.20</version>
+        </dependency>
     </dependencies>
 
     <build>

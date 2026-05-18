@@ -3,6 +3,7 @@ package com.citeright;
 import com.citeright.database.SQLiteDatabaseManager;
 import com.citeright.service.SearchService;
 import com.citeright.service.LibraryService;
+import com.citeright.service.BibSyncService;
 import com.citeright.ui.MainLayout;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -22,6 +23,10 @@ public class CiteRightApp extends Application {
         dbManager = SQLiteDatabaseManager.getInstance();
         libraryService = new LibraryService();
         searchService = new SearchService();
+
+        // Start background BibTeX sync service
+        BibSyncService.getInstance().syncNow();
+        System.out.println("[App] BibSync service started.");
     }
 
     @Override
@@ -53,6 +58,7 @@ public class CiteRightApp extends Application {
     @Override
     public void stop() throws Exception {
         System.out.println("[App] Shutting down...");
+        BibSyncService.getInstance().shutdown();
         if (dbManager != null) dbManager.close();
     }
 
