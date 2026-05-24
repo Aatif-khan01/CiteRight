@@ -47,7 +47,7 @@ public class LibraryChatService {
         // Check if AI is configured
         if (GeminiConfig.isGemini() && !GeminiConfig.isConfigured()) {
             return new ChatResponse(
-                "⚠️ **Gemini API key not set.**\n\n" +
+                "⚠ **Gemini API key not set.**\n\n" +
                 "To use AI Chat, you need a free Google Gemini API key:\n" +
                 "1. Click the ⚙ Settings icon above\n" +
                 "2. Get your free key from Google AI Studio\n" +

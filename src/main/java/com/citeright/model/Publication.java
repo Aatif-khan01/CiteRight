@@ -26,6 +26,7 @@ public abstract class Publication {
     private String venue; // Journal name or conference name
     private List<Tag> tags; // User-assigned tags
     private boolean inLibrary; // Transient — whether this paper is in user's library
+    private float[] embedding; // Dense semantic vector (e.g. BGE-M3 1024-dimensional)
 
     // Constructor
     public Publication() {
@@ -146,6 +147,14 @@ public abstract class Publication {
 
     public void setVenue(String venue) {
         this.venue = venue;
+    }
+
+    public float[] getEmbedding() {
+        return embedding;
+    }
+
+    public void setEmbedding(float[] embedding) {
+        this.embedding = embedding;
     }
 
     /**

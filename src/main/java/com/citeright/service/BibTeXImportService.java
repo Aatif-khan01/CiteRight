@@ -96,7 +96,11 @@ public class BibTeXImportService {
         String yearStr = getField(entry, BibTeXEntry.KEY_YEAR);
         if (yearStr != null && !yearStr.isEmpty()) {
             try {
-                pub.setYear(Integer.parseInt(yearStr.replaceAll("[^0-9]", "").substring(0, 4)));
+                String digits = yearStr.replaceAll("[^0-9]", "");
+                if (!digits.isEmpty()) {
+                    String yearDigits = digits.length() > 4 ? digits.substring(0, 4) : digits;
+                    pub.setYear(Integer.parseInt(yearDigits));
+                }
             } catch (Exception ignored) {}
         }
 

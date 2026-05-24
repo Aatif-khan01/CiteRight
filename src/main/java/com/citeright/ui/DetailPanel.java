@@ -205,7 +205,7 @@ public class DetailPanel extends VBox {
                         renderContent(); // Refresh the panel
                     },
                     error -> {
-                        enrichBtn.setText("⚠️ " + error);
+                        enrichBtn.setText("⚠ " + error);
                         enrichBtn.setDisable(false);
                     });
             });
@@ -351,6 +351,11 @@ public class DetailPanel extends VBox {
         TextField inputField = new TextField();
         inputField.setPromptText("Ask a question about this paper...");
         inputField.setStyle("-fx-font-size: 11.5px; -fx-padding: 8; -fx-background-radius: 6;");
+        inputField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal) {
+                com.citeright.ui.LocalSemanticAIPrompt.showPromptIfNeeded();
+            }
+        });
 
         Button sendBtn = new Button("Send");
         sendBtn.setStyle("-fx-background-color: #6c5ce7; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6;");
@@ -362,6 +367,7 @@ public class DetailPanel extends VBox {
         PdfChatService chatService = new PdfChatService();
 
         Runnable sendMsg = () -> {
+            com.citeright.ui.LocalSemanticAIPrompt.showPromptIfNeeded();
             String q = inputField.getText().trim();
             if (q.isEmpty()) return;
             chatHistory.appendText("You: " + q + "\n\n");
@@ -891,62 +897,92 @@ public class DetailPanel extends VBox {
         header.setStyle("-fx-text-fill: #5a5a7a; -fx-font-size: 9px; -fx-font-weight: bold;");
 
         VBox listContainer = new VBox(4);
-        Button findSimilarBtn = new Button("Find Similar Papers");
-        findSimilarBtn.setStyle("-fx-background-color: #4a6cf7; -fx-text-fill: white; -fx-font-size: 10px; -fx-padding: 4 8; -fx-background-radius: 4; -fx-cursor: hand;");
-        listContainer.getChildren().add(findSimilarBtn);
+        Label loadingLabel = new Label("⏳ Finding similar papers...");
+        loadingLabel.setStyle("-fx-text-fill: #8888aa; -fx-font-size: 11px;");
+        listContainer.getChildren().add(loadingLabel);
         section.getChildren().addAll(header, listContainer);
 
-        findSimilarBtn.setOnAction(evt -> {
-            listContainer.getChildren().clear();
-            Label loadingLabel = new Label("⏳ Finding similar papers...");
-            loadingLabel.setStyle("-fx-text-fill: #8888aa; -fx-font-size: 11px;");
-            listContainer.getChildren().add(loadingLabel);
-
-            new Thread(() -> {
-                try {
+        new Thread(() -> {
+            try {
                 java.util.List<LibraryEntry> allEntries = libraryService.getAllActive();
                 if (allEntries.size() < 2) {
-                    Platform.runLater(() -> loadingLabel.setText("Not enough papers in library."));
+                    Platform.runLater(() -> {
+                        listContainer.getChildren().clear();
+                        Label none = new Label("Not enough papers in library.");
+                        none.setStyle("-fx-text-fill: #8888aa; -fx-font-size: 11px;");
+                        listContainer.getChildren().add(none);
+                    });
                     return;
                 }
 
-                TfIdfEngine engine = new TfIdfEngine();
-                java.util.List<String> docs = new java.util.ArrayList<>();
-                for (LibraryEntry e : allEntries) {
-                    docs.add(e.getPublication().getTitle() + " " + (e.getPublication().getAbstractText() != null ? e.getPublication().getAbstractText() : ""));
-                }
-                engine.buildModel(docs);
-
-                int targetIndex = allEntries.indexOf(targetEntry);
-                if (targetIndex < 0) return;
-                String targetDoc = docs.get(targetIndex);
-                java.util.Map<String, Double> targetVec = engine.computeTfIdfVector(targetDoc);
-
-                java.util.List<LibraryEntry> related = new java.util.ArrayList<>();
+                java.util.List<LibraryEntry> topRelated = new java.util.ArrayList<>();
                 java.util.Map<LibraryEntry, Double> scores = new java.util.HashMap<>();
 
-                for (int i = 0; i < allEntries.size(); i++) {
-                    if (i == targetIndex) continue;
-                    java.util.Map<String, Double> vec = engine.computeTfIdfVector(docs.get(i));
-                    double sim = TfIdfEngine.cosineSimilarity(targetVec, vec);
-                    if (sim > 0.05) {
-                        scores.put(allEntries.get(i), sim);
-                        related.add(allEntries.get(i));
+                if (com.citeright.ai.NeuralAvailability.isReady()) {
+                    // --- Neural Recommendation Path (BGE-M3) ---
+                    System.out.println("[Recommendation] Using BGE-M3 neural recommender automatically.");
+                    com.citeright.service.PaperRecommendationService recService = new com.citeright.service.PaperRecommendationService();
+                    java.util.List<com.citeright.service.PaperRecommendationService.ScoredRecommendation> recs = 
+                        recService.findSimilar(targetEntry, allEntries, 3);
+                    for (com.citeright.service.PaperRecommendationService.ScoredRecommendation rec : recs) {
+                        topRelated.add(rec.entry());
+                        scores.put(rec.entry(), rec.similarity());
                     }
+                } else {
+                    // --- Standard TF-IDF Fallback Path ---
+                    System.out.println("[Recommendation] Using TF-IDF fallback recommender automatically.");
+                    TfIdfEngine engine = new TfIdfEngine();
+                    java.util.List<String> docs = new java.util.ArrayList<>();
+                    for (LibraryEntry e : allEntries) {
+                        docs.add(e.getPublication().getTitle() + " " + (e.getPublication().getAbstractText() != null ? e.getPublication().getAbstractText() : ""));
+                    }
+                    engine.buildModel(docs);
+
+                    int targetIndex = -1;
+                    for (int i = 0; i < allEntries.size(); i++) {
+                        if (allEntries.get(i).getId() == targetEntry.getId()) {
+                            targetIndex = i;
+                            break;
+                        }
+                    }
+                    if (targetIndex < 0) {
+                        Platform.runLater(() -> {
+                            listContainer.getChildren().clear();
+                            Label err = new Label("Selected paper not found in library.");
+                            err.setStyle("-fx-text-fill: #8888aa; -fx-font-size: 11px;");
+                            listContainer.getChildren().add(err);
+                        });
+                        return;
+                    }
+
+                    String targetDoc = docs.get(targetIndex);
+                    java.util.Map<String, Double> targetVec = engine.computeTfIdfVector(targetDoc);
+
+                    java.util.List<LibraryEntry> related = new java.util.ArrayList<>();
+                    for (int i = 0; i < allEntries.size(); i++) {
+                        if (i == targetIndex) continue;
+                        java.util.Map<String, Double> vec = engine.computeTfIdfVector(docs.get(i));
+                        double sim = TfIdfEngine.cosineSimilarity(targetVec, vec);
+                        if (sim > 0.05) {
+                            scores.put(allEntries.get(i), sim);
+                            related.add(allEntries.get(i));
+                        }
+                    }
+
+                    related.sort((a, b) -> Double.compare(scores.get(b), scores.get(a)));
+                    topRelated = related.subList(0, Math.min(3, related.size()));
                 }
 
-                related.sort((a, b) -> Double.compare(scores.get(b), scores.get(a)));
-                java.util.List<LibraryEntry> topRelated = related.subList(0, Math.min(3, related.size()));
-
+                final java.util.List<LibraryEntry> finalRelated = topRelated;
                 Platform.runLater(() -> {
                     listContainer.getChildren().clear();
-                    if (topRelated.isEmpty()) {
+                    if (finalRelated.isEmpty()) {
                         Label none = new Label("No closely related papers found.");
                         none.setStyle("-fx-text-fill: #8888aa; -fx-font-size: 11px;");
                         listContainer.getChildren().add(none);
                     } else {
-                        for (LibraryEntry rel : topRelated) {
-                            double score = scores.get(rel);
+                        for (LibraryEntry rel : finalRelated) {
+                            double score = scores.getOrDefault(rel, 0.0);
                             Hyperlink link = new Hyperlink(rel.getPublication().getTitle() + " (" + Math.round(score * 100) + "% match)");
                             link.setStyle("-fx-text-fill: #4a6cf7; -fx-font-size: 11px;");
                             link.setWrapText(true);
@@ -963,6 +999,7 @@ public class DetailPanel extends VBox {
                 });
 
             } catch (Exception ex) {
+                ex.printStackTrace();
                 Platform.runLater(() -> {
                     listContainer.getChildren().clear();
                     Label errLabel = new Label("Error loading related papers.");
@@ -971,7 +1008,6 @@ public class DetailPanel extends VBox {
                 });
             }
         }).start();
-        });
 
         return section;
     }

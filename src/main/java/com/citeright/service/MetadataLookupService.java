@@ -179,7 +179,7 @@ public class MetadataLookupService {
 
     private String extractXml(String xml, String tag) {
         int start = xml.indexOf("<" + tag + ">");
-        if (start == -1) { start = xml.indexOf("<" + tag + " "); if (start == -1) return ""; start = xml.indexOf(">", start); }
+        if (start == -1) { start = xml.indexOf("<" + tag + " "); if (start == -1) return ""; start = xml.indexOf(">", start) + 1; }
         else { start += tag.length() + 2; }
         int end = xml.indexOf("</" + tag + ">", start);
         return end > start ? xml.substring(start, end) : "";

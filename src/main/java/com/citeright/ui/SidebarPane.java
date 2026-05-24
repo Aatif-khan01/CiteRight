@@ -126,7 +126,7 @@ public class SidebarPane extends VBox {
         });
         importBtn.setTooltip(new Tooltip("Import references from BibTeX (.bib) or RIS (.ris) files"));
 
-        Button zoteroBtn = createNavButton("🗄️  Import Zotero DB", false);
+        Button zoteroBtn = createNavButton("🗄  Import Zotero DB", false);
         zoteroBtn.setOnAction(e -> {
             flashButton(zoteroBtn);
             FileChooser fc = new FileChooser();

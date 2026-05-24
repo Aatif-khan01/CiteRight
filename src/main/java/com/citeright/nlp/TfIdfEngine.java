@@ -59,7 +59,7 @@ public class TfIdfEngine {
         idfScores.clear();
         for (Map.Entry<String, Integer> entry : documentFrequency.entrySet()) {
             double idf = Math.log((double) totalDocuments / (1.0 + entry.getValue()));
-            idfScores.put(entry.getKey(), idf);
+            idfScores.put(entry.getKey(), Math.max(0.0001, idf));
         }
 
         System.out.println("[TF-IDF] Model built: " + idfScores.size() + 

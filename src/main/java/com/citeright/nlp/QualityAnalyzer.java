@@ -36,9 +36,9 @@ public class QualityAnalyzer {
         // Age-based analysis
         if (paper.getYear() > 0) {
             if (age >= HIGHLY_OUTDATED_THRESHOLD_YEARS) {
-                flags.add("⚠️ Published " + age + " years ago — may be significantly outdated");
+                flags.add("⚠ Published " + age + " years ago — may be significantly outdated");
             } else if (age >= OUTDATED_THRESHOLD_YEARS) {
-                flags.add("⚠️ Published " + age + " years ago — check for newer research");
+                flags.add("⚠ Published " + age + " years ago — check for newer research");
             } else if (age <= 1) {
                 flags.add("🆕 Recently published (" + paper.getYear() + ")");
             }

@@ -48,6 +48,16 @@ public class MainLayout extends BorderPane {
     private String currentView = "ALL_ACTIVE";
     private boolean isTrashView = false;
 
+    // === Local Semantic AI Status Bar ===
+    private HBox statusBar;
+    private Label statusLabel;
+    private Hyperlink statusAction1;
+    private Hyperlink statusAction2;
+    private com.citeright.ai.BgeM3ModelDownloader.State lastDlStateRef = com.citeright.ai.BgeM3ModelDownloader.State.IDLE;
+    private double lastPercent = 0.0;
+    private double lastSpeed = 0.0;
+    private String lastFileLabel = "";
+
     public MainLayout(LibraryService libraryService, SearchService searchService) {
         this.libraryService = libraryService;
         this.searchService = searchService;
@@ -208,6 +218,159 @@ public class MainLayout extends BorderPane {
             detailPanel.showEntry(entry);
             setRight(detailPanel);
         });
+
+        // ── Local Semantic AI Status Bar ─────────────────────────────────────
+        initStatusBar();
+        setupStatusBarListeners();
+        updateStatusBar();
+    }
+
+    private void initStatusBar() {
+        statusBar = new HBox(12);
+        statusBar.setAlignment(Pos.CENTER_LEFT);
+        statusBar.setPadding(new Insets(6, 16, 6, 16));
+        statusBar.setStyle("-fx-background-color: #f0f3ff; -fx-border-color: #d4d4e0; -fx-border-width: 1 0 0 0;");
+
+        statusLabel = new Label();
+        statusLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #3f3f5a; -fx-font-weight: bold;");
+
+        statusAction1 = new Hyperlink();
+        statusAction1.setStyle("-fx-font-size: 10px; -fx-text-fill: #4a6cf7; -fx-font-weight: bold; -fx-underline: true;");
+        statusAction1.setFocusTraversable(false);
+
+        statusAction2 = new Hyperlink();
+        statusAction2.setStyle("-fx-font-size: 10px; -fx-text-fill: #cc3333; -fx-font-weight: bold; -fx-underline: true;");
+        statusAction2.setFocusTraversable(false);
+
+        statusBar.getChildren().addAll(statusLabel, statusAction1, statusAction2);
+    }
+
+    private void setupStatusBarListeners() {
+        com.citeright.ai.BgeM3ModelDownloader downloader = com.citeright.ai.EmbeddingService.getInstance().getDownloader();
+        downloader.addListener(new com.citeright.ai.BgeM3ModelDownloader.DownloadListener() {
+            @Override
+            public void onProgress(double percent, double speedMBs, String activeFile, long downloadedBytes, long totalBytes) {
+                lastPercent = percent;
+                lastSpeed = speedMBs;
+                lastFileLabel = activeFile;
+                Platform.runLater(() -> {
+                    if (downloader.getState() == com.citeright.ai.BgeM3ModelDownloader.State.DOWNLOADING) {
+                        if (getBottom() != statusBar) {
+                            setBottom(statusBar);
+                        }
+                        statusLabel.setText(String.format("Downloading Semantic AI Pack (%s)... %d%% (Speed: %.1f MB/s)",
+                                activeFile, Math.round(percent * 100), speedMBs));
+                        statusAction1.setText("Pause");
+                        statusAction1.setVisible(true);
+                        statusAction1.setManaged(true);
+                        statusAction1.setOnAction(e -> downloader.pause());
+
+                        statusAction2.setText("Cancel");
+                        statusAction2.setVisible(true);
+                        statusAction2.setManaged(true);
+                        statusAction2.setOnAction(e -> downloader.cancel());
+                    }
+                });
+            }
+
+            @Override
+            public void onComplete() {
+                Platform.runLater(() -> updateStatusBar());
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Platform.runLater(() -> {
+                    if (getBottom() != statusBar) {
+                        setBottom(statusBar);
+                    }
+                    statusLabel.setText("❌ Local AI download error: " + errorMessage);
+                    statusAction1.setText("Retry");
+                    statusAction1.setVisible(true);
+                    statusAction1.setManaged(true);
+                    statusAction1.setOnAction(e -> downloader.start());
+
+                    statusAction2.setText("Dismiss");
+                    statusAction2.setVisible(true);
+                    statusAction2.setManaged(true);
+                    statusAction2.setOnAction(e -> setBottom(null));
+                });
+            }
+
+            @Override
+            public void onStateChanged(com.citeright.ai.BgeM3ModelDownloader.State newState) {
+                Platform.runLater(() -> updateStatusBar());
+            }
+        });
+
+        com.citeright.ai.EmbeddingQueueManager.getInstance().addListener((remainingSize, isIndexing) -> {
+            Platform.runLater(() -> updateStatusBar());
+        });
+    }
+
+    private void updateStatusBar() {
+        if (!Platform.isFxApplicationThread()) {
+            Platform.runLater(this::updateStatusBar);
+            return;
+        }
+
+        com.citeright.ai.BgeM3ModelDownloader downloader = com.citeright.ai.EmbeddingService.getInstance().getDownloader();
+        com.citeright.ai.BgeM3ModelDownloader.State dlState = downloader.getState();
+        com.citeright.ai.EmbeddingQueueManager queueManager = com.citeright.ai.EmbeddingQueueManager.getInstance();
+
+        if (dlState == com.citeright.ai.BgeM3ModelDownloader.State.DOWNLOADING) {
+            if (getBottom() != statusBar) {
+                setBottom(statusBar);
+            }
+            // Will be updated by onProgress callback
+        } else if (dlState == com.citeright.ai.BgeM3ModelDownloader.State.PAUSED) {
+            if (getBottom() != statusBar) {
+                setBottom(statusBar);
+            }
+            statusLabel.setText("Downloading Semantic AI Pack... Paused");
+            statusAction1.setText("Resume");
+            statusAction1.setVisible(true);
+            statusAction1.setManaged(true);
+            statusAction1.setOnAction(e -> downloader.resume());
+
+            statusAction2.setText("Cancel");
+            statusAction2.setVisible(true);
+            statusAction2.setManaged(true);
+            statusAction2.setOnAction(e -> downloader.cancel());
+        } else if (com.citeright.ai.GeminiConfig.isBgeM3() && com.citeright.ai.EmbeddingService.getInstance().isBgeM3Ready() && queueManager.getQueueSize() > 0) {
+            if (getBottom() != statusBar) {
+                setBottom(statusBar);
+            }
+            int remaining = queueManager.getQueueSize();
+            statusLabel.setText("⚙ Local AI is indexing papers... " + remaining + " remaining");
+            statusAction1.setVisible(false);
+            statusAction1.setManaged(false);
+            statusAction2.setVisible(false);
+            statusAction2.setManaged(false);
+        } else {
+            if (dlState == com.citeright.ai.BgeM3ModelDownloader.State.COMPLETED && lastDlStateRef != com.citeright.ai.BgeM3ModelDownloader.State.COMPLETED) {
+                if (getBottom() != statusBar) {
+                    setBottom(statusBar);
+                }
+                statusLabel.setText("🟢 Local Semantic AI Ready");
+                statusAction1.setVisible(false);
+                statusAction1.setManaged(false);
+                statusAction2.setVisible(false);
+                statusAction2.setManaged(false);
+
+                new Thread(() -> {
+                    try { Thread.sleep(5000); } catch (InterruptedException ignored) {}
+                    Platform.runLater(() -> {
+                        if (downloader.getState() == com.citeright.ai.BgeM3ModelDownloader.State.COMPLETED && queueManager.getQueueSize() == 0) {
+                            setBottom(null);
+                        }
+                    });
+                }).start();
+            } else {
+                setBottom(null);
+            }
+        }
+        lastDlStateRef = dlState;
     }
 
     /**

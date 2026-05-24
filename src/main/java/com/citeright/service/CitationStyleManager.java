@@ -118,7 +118,7 @@ public class CitationStyleManager {
                     return formatCitationFromFile(pub, styleId);
                 }
             }
-            return "⚠️ Could not format citation: " + e.getMessage();
+            return "⚠ Could not format citation: " + e.getMessage();
         }
     }
 
@@ -128,7 +128,7 @@ public class CitationStyleManager {
     private String formatCitationFromFile(Publication pub, String styleId) {
         try {
             Path cslFile = stylesDir.resolve(styleId + ".csl");
-            if (!Files.exists(cslFile)) return "⚠️ Style file not found: " + styleId;
+            if (!Files.exists(cslFile)) return "⚠ Style file not found: " + styleId;
 
             String styleXml = Files.readString(cslFile);
             CSLItemData item = publicationToCSL(pub);
@@ -139,7 +139,7 @@ public class CitationStyleManager {
             csl.registerCitationItems(item.getId());
             return cleanHtml(csl.makeBibliography().makeString());
         } catch (Exception e) {
-            return "⚠️ Could not format citation: " + e.getMessage();
+            return "⚠ Could not format citation: " + e.getMessage();
         }
     }
 

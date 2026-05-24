@@ -33,25 +33,50 @@ public class PdfChatService {
         }
 
         if (GeminiConfig.isGemini() && !GeminiConfig.isConfigured()) {
-            return "⚠️ **Gemini API key not set.** Please configure it in Settings.";
+            return "⚠ **Gemini API key not set.** Please configure it in Settings.";
         }
 
         // 1. Chunk the PDF text
         List<String> chunks = chunkText(pdfText, CHUNK_SIZE);
 
-        // 2. Vectorize question and chunks to find the best context
-        Map<String, Double> questionVec = tfIdfEngine.computeTfIdfVector(question);
-        
-        // Find top 3 chunks
         List<String> topChunks = new ArrayList<>();
         double[] scores = new double[chunks.size()];
-        
-        for (int i = 0; i < chunks.size(); i++) {
-            Map<String, Double> chunkVec = tfIdfEngine.computeTfIdfVector(chunks.get(i));
-            scores[i] = TfIdfEngine.cosineSimilarity(questionVec, chunkVec);
+
+        // ── Try BGE-M3 Local Neural RAG First ────────────────────────────────
+        if (com.citeright.ai.GeminiConfig.isBgeM3() && com.citeright.ai.BgeM3EmbeddingEngine.getInstance().isLoaded()) {
+            try {
+                System.out.println("[PdfChat] Performing BGE-M3 neural retrieval over " + chunks.size() + " chunks...");
+                com.citeright.ai.BgeM3EmbeddingEngine neuralEngine = com.citeright.ai.BgeM3EmbeddingEngine.getInstance();
+                float[] questionVec = neuralEngine.getEmbedding(question);
+
+                if (questionVec != null) {
+                    for (int i = 0; i < chunks.size(); i++) {
+                        float[] chunkVec = neuralEngine.getEmbedding(chunks.get(i));
+                        scores[i] = com.citeright.ai.BgeM3EmbeddingEngine.cosineSimilarity(questionVec, chunkVec);
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("[PdfChat] Neural chunk retrieval failed: " + e.getMessage() + ". Falling back to TF-IDF.");
+                // Fall back: trigger TF-IDF by zeroing scores
+                scores = null;
+            }
+        } else {
+            scores = null;
         }
 
-        // Simple selection of top 3 chunks (could use a PriorityQueue for better perf on huge docs, but arrays are fine for 100 chunks)
+        // ── Fallback: Local TF-IDF Chunk Retrieval ───────────────────────────
+        if (scores == null) {
+            System.out.println("[PdfChat] Performing TF-IDF keyword-based retrieval over " + chunks.size() + " chunks...");
+            tfIdfEngine.buildModel(chunks);
+            Map<String, Double> questionVec = tfIdfEngine.computeTfIdfVector(question);
+            scores = new double[chunks.size()];
+            for (int i = 0; i < chunks.size(); i++) {
+                Map<String, Double> chunkVec = tfIdfEngine.computeTfIdfVector(chunks.get(i));
+                scores[i] = TfIdfEngine.cosineSimilarity(questionVec, chunkVec);
+            }
+        }
+
+        // Simple selection of top 3 chunks (Priority selection)
         for (int k = 0; k < 3 && k < chunks.size(); k++) {
             int bestIdx = -1;
             double bestScore = -1.0;

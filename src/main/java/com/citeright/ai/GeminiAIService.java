@@ -39,7 +39,7 @@ public class GeminiAIService {
         if (GeminiConfig.isOllama()) {
             String result = chatOllama(systemPrompt, userPrompt);
             // Auto-fallback: if Ollama fails and Gemini key exists, use Gemini
-            if (result != null && result.startsWith("⚠️") && GeminiConfig.isConfigured()) {
+            if (result != null && result.startsWith("⚠") && GeminiConfig.isConfigured()) {
                 return chatGemini(systemPrompt, userPrompt) + 
                        "\n\n💡 _Note: Ollama was unavailable, so I used Gemini instead. Check AI Settings to switch providers._";
             }
@@ -54,7 +54,7 @@ public class GeminiAIService {
     private String chatGemini(String systemPrompt, String userPrompt) {
         String apiKey = GeminiConfig.getApiKey();
         if (apiKey == null || apiKey.isEmpty()) {
-            return "⚠️ Gemini API key not configured. Go to AI Settings (⚙) to add your free API key.";
+            return "⚠ Gemini API key not configured. Go to AI Settings (⚙) to add your free API key.";
         }
 
         try {
@@ -84,7 +84,12 @@ public class GeminiAIService {
             // Generation config
             JsonObject genConfig = new JsonObject();
             genConfig.addProperty("temperature", 0.3);
-            genConfig.addProperty("maxOutputTokens", 1024);
+            genConfig.addProperty("maxOutputTokens", 8192);
+            
+            JsonObject thinkingConfig = new JsonObject();
+            thinkingConfig.addProperty("thinkingBudget", 0);
+            genConfig.add("thinkingConfig", thinkingConfig);
+            
             requestBody.add("generationConfig", genConfig);
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -97,19 +102,20 @@ public class GeminiAIService {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
+                System.out.println("[GeminiAIService] Raw HTTP Response Body:\n" + response.body());
                 return parseGeminiResponse(response.body());
             } else if (response.statusCode() == 429) {
-                return "⚠️ Rate limit or daily quota reached. Gemini's free tier allows 15 requests/min and 1,500 requests/day. Please try again later.";
+                return "⚠ Rate limit or daily quota reached. Gemini's free tier allows 15 requests/min and 1,500 requests/day. Please try again later.";
             } else if (response.statusCode() == 400) {
-                return "⚠️ Invalid API key. Please check your Gemini API key in AI Settings.";
+                return "⚠ Invalid API key. Please check your Gemini API key in AI Settings.";
             } else {
-                return "⚠️ Gemini API error (HTTP " + response.statusCode() + "). Please try again.";
+                return "⚠ Gemini API error (HTTP " + response.statusCode() + "). Please try again.";
             }
 
         } catch (java.net.http.HttpTimeoutException e) {
-            return "⚠️ Request timed out. The Gemini server may be busy. Please try again.";
+            return "⚠ Request timed out. The Gemini server may be busy. Please try again.";
         } catch (Exception e) {
-            return "⚠️ Connection error: " + e.getMessage();
+            return "⚠ Connection error: " + e.getMessage();
         }
     }
 
@@ -130,7 +136,7 @@ public class GeminiAIService {
         } catch (Exception e) {
             System.err.println("[GeminiAIService] Parse error: " + e.getMessage());
         }
-        return "⚠️ Could not parse AI response.";
+        return "⚠ Could not parse AI response.";
     }
 
     // ── Ollama Local ────────────────────────────────────────────────────────
@@ -149,7 +155,7 @@ public class GeminiAIService {
             // Ollama options
             JsonObject options = new JsonObject();
             options.addProperty("temperature", 0.3);
-            options.addProperty("num_predict", 1024);
+            options.addProperty("num_predict", 4096);
             requestBody.add("options", options);
 
             HttpRequest request = HttpRequest.newBuilder()
@@ -166,17 +172,17 @@ public class GeminiAIService {
                 if (json.has("response")) {
                     return json.get("response").getAsString().trim();
                 }
-                return "⚠️ Unexpected Ollama response format.";
+                return "⚠ Unexpected Ollama response format.";
             } else {
-                return "⚠️ Ollama error (HTTP " + response.statusCode() + "). Is the model '" + model + "' installed? Run: ollama pull " + model;
+                return "⚠ Ollama error (HTTP " + response.statusCode() + "). Is the model '" + model + "' installed? Run: ollama pull " + model;
             }
 
         } catch (java.net.ConnectException e) {
-            return "⚠️ Cannot connect to Ollama at " + ollamaUrl + ".\n\nMake sure Ollama is running:\n1. Install from https://ollama.ai\n2. Run: ollama serve\n3. Pull a model: ollama pull " + model;
+            return "⚠ Cannot connect to Ollama at " + ollamaUrl + ".\n\nMake sure Ollama is running:\n1. Install from https://ollama.ai\n2. Run: ollama serve\n3. Pull a model: ollama pull " + model;
         } catch (java.net.http.HttpTimeoutException e) {
-            return "⚠️ Ollama timed out. The model may be loading for the first time. Please try again.";
+            return "⚠ Ollama timed out. The model may be loading for the first time. Please try again.";
         } catch (Exception e) {
-            return "⚠️ Ollama connection error: " + e.getMessage();
+            return "⚠ Ollama connection error: " + e.getMessage();
         }
     }
 
@@ -204,10 +210,63 @@ public class GeminiAIService {
      * Extracts exactly which sentence from a paper's abstract supports the user's claim.
      */
     public String extractEvidence(String claim, Publication paper) {
-        if (paper.getAbstractText() == null || paper.getAbstractText().isEmpty()) {
+        if (paper.getAbstractText() == null || paper.getAbstractText().trim().isEmpty()) {
+            try {
+                String doi = paper.getDoi();
+                if (doi != null && !doi.trim().isEmpty()) {
+                    System.out.println("[Evidence] Abstract is empty. Fetching from Semantic Scholar using DOI: " + doi);
+                    String abstractText = fetchAbstractFromSemanticScholar(doi);
+                    if (abstractText != null && !abstractText.trim().isEmpty()) {
+                        paper.setAbstractText(abstractText);
+                        System.out.println("[Evidence] Successfully fetched abstract: " + abstractText.substring(0, Math.min(abstractText.length(), 60)) + "...");
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("[Evidence] On-the-fly abstract fetch failed: " + e.getMessage());
+            }
+        }
+
+        if (paper.getAbstractText() == null || paper.getAbstractText().trim().isEmpty()) {
             return null;
         }
 
+        // --- Local BGE-M3 Neural Matcher (100% Offline & Instant) ---
+        if (NeuralAvailability.isReady()) {
+            try {
+                System.out.println("[Evidence] Using local BGE-M3 neural engine to extract evidence.");
+                float[] claimEmbedding = NeuralAvailability.embed(claim.trim());
+                if (claimEmbedding != null) {
+                    // Split abstract into sentences by punctuation followed by space
+                    String[] sentences = paper.getAbstractText().split("(?<=[.!?])\\s+");
+                    String bestSentence = null;
+                    double bestScore = -1.0;
+
+                    for (String sentence : sentences) {
+                        sentence = sentence.trim();
+                        if (sentence.length() < 10) continue; // Skip minor/short fragments
+
+                        float[] sentenceEmbedding = NeuralAvailability.embed(sentence);
+                        if (sentenceEmbedding != null) {
+                            double sim = BgeM3EmbeddingEngine.cosineSimilarity(claimEmbedding, sentenceEmbedding);
+                            if (sim > bestScore) {
+                                bestScore = sim;
+                                bestSentence = sentence;
+                            }
+                        }
+                    }
+
+                    System.out.println("[Evidence] Best neural match score: " + Math.round(bestScore * 100) + "%");
+                    if (bestScore >= 0.30 && bestSentence != null) {
+                        return bestSentence;
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("[Evidence] Neural extraction failed, falling back to LLM: " + e.getMessage());
+            }
+        }
+
+        // --- Standard Fallback: Generative AI (Gemini or Ollama LLM) ---
+        System.out.println("[Evidence] Falling back to LLM chat for evidence extraction.");
         String systemPrompt = "You output ONLY exact quotes from the given text. Do not add your own words.";
         String userPrompt = "Find the EXACT sentence in the following Abstract that provides evidence for the user's Claim. " +
                 "If no sentence provides evidence, return exactly 'NONE'. If there is evidence, return ONLY the exact sentence.\n\n" +
@@ -216,12 +275,33 @@ public class GeminiAIService {
                 "Abstract: " + paper.getAbstractText();
 
         String result = chat(systemPrompt, userPrompt);
-        if (result != null && !result.startsWith("⚠️") && !"NONE".equalsIgnoreCase(result.trim())) {
+        if (result != null && !result.startsWith("⚠") && !"NONE".equalsIgnoreCase(result.trim())) {
             // Strip quotes if wrapped
             if (result.startsWith("\"") && result.endsWith("\"")) {
                 result = result.substring(1, result.length() - 1);
             }
             return result;
+        }
+        return null;
+    }
+
+    private String fetchAbstractFromSemanticScholar(String doi) {
+        try {
+            String url = "https://api.semanticscholar.org/graph/v1/paper/DOI:" + java.net.URLEncoder.encode(doi, java.nio.charset.StandardCharsets.UTF_8) + "?fields=abstract";
+            java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder()
+                    .uri(java.net.URI.create(url))
+                    .header("User-Agent", "CiteRight/1.0 (mailto:citeright@example.com)")
+                    .timeout(java.time.Duration.ofSeconds(10))
+                    .GET().build();
+            java.net.http.HttpResponse<String> response = httpClient.send(request, java.net.http.HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                JsonObject root = JsonParser.parseString(response.body()).getAsJsonObject();
+                if (root.has("abstract") && !root.get("abstract").isJsonNull()) {
+                    return root.get("abstract").getAsString().trim();
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("[Evidence] Semantic Scholar API failed: " + e.getMessage());
         }
         return null;
     }

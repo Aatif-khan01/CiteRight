@@ -33,7 +33,49 @@ public class SemanticLibrarySearch {
             return Collections.emptyList();
         }
 
-        // Build the document corpus from the library (title + abstract for each paper)
+        // ── Try BGE-M3 Local Neural Search First ─────────────────────────────
+        if (com.citeright.ai.NeuralAvailability.isReady()) {
+            try {
+                float[] queryVec = com.citeright.ai.NeuralAvailability.embed(query);
+
+                if (queryVec != null) {
+                    // Load all cached embeddings in one fast roundtrip
+                    Map<Integer, float[]> cachedEmbeddings = com.citeright.ai.NeuralAvailability.getCachedEmbeddings();
+                    com.citeright.database.PaperEmbeddingDAO embeddingDAO = new com.citeright.database.PaperEmbeddingDAO();
+                    
+                    List<ScoredEntry> results = new ArrayList<>();
+                    
+                    for (LibraryEntry entry : entries) {
+                        int paperId = entry.getId();
+                        float[] docVector = cachedEmbeddings.get(paperId);
+                        
+                        // Dynamic Fallback: if not yet cached by background indexer, compute on-the-fly and cache
+                        if (docVector == null) {
+                            String text = buildDocumentText(entry);
+                            docVector = com.citeright.ai.NeuralAvailability.embed(text);
+                            if (docVector != null) {
+                                embeddingDAO.saveEmbedding(paperId, "bge-m3", "v1", docVector);
+                            }
+                        }
+                        
+                        if (docVector != null) {
+                            double score = com.citeright.ai.BgeM3EmbeddingEngine.cosineSimilarity(queryVec, docVector);
+                            if (score >= 0.15) {
+                                results.add(new ScoredEntry(entry, score));
+                            }
+                        }
+                    }
+                    
+                    results.sort((a, b) -> Double.compare(b.score(), a.score()));
+                    return results;
+                }
+            } catch (Exception e) {
+                System.err.println("[SemanticSearch] Neural search failed, falling back to TF-IDF: " + e.getMessage());
+            }
+        }
+
+        // ── Fallback: Local TF-IDF Cosine Similarity Search ──────────────────
+        System.out.println("[SemanticSearch] Performing standard TF-IDF semantic search...");
         List<String> documents = new ArrayList<>();
         for (LibraryEntry entry : entries) {
             documents.add(buildDocumentText(entry));

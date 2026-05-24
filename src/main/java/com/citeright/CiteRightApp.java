@@ -27,6 +27,14 @@ public class CiteRightApp extends Application {
         // Start background BibTeX sync service
         BibSyncService.getInstance().syncNow();
         System.out.println("[App] BibSync service started.");
+
+        // Initialize neural semantic engine in the background
+        try {
+            com.citeright.ai.EmbeddingService.getInstance().initializeEngine();
+            System.out.println("[App] Semantic AI engine initialized.");
+        } catch (Exception e) {
+            System.err.println("[App] Failed to start Semantic AI engine: " + e.getMessage());
+        }
     }
 
     @Override
@@ -47,7 +55,7 @@ public class CiteRightApp extends Application {
         // Install Ctrl+K shortcut
         root.installKeyboardShortcuts();
 
-        primaryStage.setTitle("CiteRight — Reference Manager");
+        primaryStage.setTitle("CiteRight");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(550);
@@ -58,8 +66,27 @@ public class CiteRightApp extends Application {
     @Override
     public void stop() throws Exception {
         System.out.println("[App] Shutting down...");
+
+        // 1. Stop background services
         BibSyncService.getInstance().shutdown();
+
+        // 2. Stop AI services (background indexer + neural engine)
+        try {
+            com.citeright.ai.EmbeddingQueueManager.getInstance().shutdown();
+        } catch (Exception e) {
+            System.err.println("[App] EmbeddingQueueManager shutdown error: " + e.getMessage());
+        }
+        try {
+            com.citeright.ai.BgeM3EmbeddingEngine.getInstance().close();
+        } catch (Exception e) {
+            System.err.println("[App] BgeM3EmbeddingEngine close error: " + e.getMessage());
+        }
+
+        // 3. Close database (last — other services may still flush data)
         if (dbManager != null) dbManager.close();
+
+        System.out.println("[App] Shutdown complete.");
+        // No System.exit(0) — let JavaFX runtime handle clean exit
     }
 
     public static void main(String[] args) {

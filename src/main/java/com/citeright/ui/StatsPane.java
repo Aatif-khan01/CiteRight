@@ -113,7 +113,7 @@ public class StatsPane extends VBox {
         // ── Top Topics ──
         VBox topicsSection = new VBox(8);
         topicsSection.setPadding(new Insets(0, 24, 20, 24));
-        Label topicsTitle = new Label("🏷️ Top Venues");
+        Label topicsTitle = new Label("🏷 Top Venues");
         topicsTitle.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;");
 
         Map<String, Integer> venueCounts = new HashMap<>();

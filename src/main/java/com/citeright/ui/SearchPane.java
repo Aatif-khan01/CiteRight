@@ -294,6 +294,9 @@ public class SearchPane extends VBox {
 
     /** Semantic search over the user's saved library — instant, offline. */
     private void executeLibrarySearch(String query) {
+        // Prompt user to enable advanced Local Semantic AI if they haven't configured it yet
+        LocalSemanticAIPrompt.showPromptIfNeeded();
+
         setStatus("Searching your library…", "#8888aa");
         findBtn_setDisabled(true);
 
@@ -626,6 +629,7 @@ public class SearchPane extends VBox {
                 "-fx-font-weight: bold; " +
                 "-fx-padding: 3 8; " +
                 "-fx-background-radius: 10;");
+        badge.setMinWidth(Region.USE_PREF_SIZE);
         return badge;
     }
 

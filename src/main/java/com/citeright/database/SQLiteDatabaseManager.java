@@ -240,6 +240,31 @@ public class SQLiteDatabaseManager {
                 )
             """);
 
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS paper_relationships (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    source_paper_id INTEGER NOT NULL,
+                    target_paper_id INTEGER NOT NULL,
+                    relationship_type TEXT NOT NULL,
+                    reasoning TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (source_paper_id) REFERENCES papers(id) ON DELETE CASCADE,
+                    FOREIGN KEY (target_paper_id) REFERENCES papers(id) ON DELETE CASCADE,
+                    UNIQUE(source_paper_id, target_paper_id, relationship_type)
+                )
+            """);
+
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS workspace_pins (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    paper_id INTEGER NOT NULL UNIQUE,
+                    x REAL NOT NULL,
+                    y REAL NOT NULL,
+                    pinned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (paper_id) REFERENCES papers(id) ON DELETE CASCADE
+                )
+            """);
+
             // Migrate: add columns if missing
             try { stmt.executeUpdate("ALTER TABLE user_library ADD COLUMN is_deleted INTEGER DEFAULT 0"); } catch (SQLException ignored) {}
             try { stmt.executeUpdate("ALTER TABLE user_library ADD COLUMN deleted_at TIMESTAMP"); } catch (SQLException ignored) {}
@@ -250,6 +275,75 @@ public class SQLiteDatabaseManager {
             // Collections migrations
             try { stmt.executeUpdate("ALTER TABLE collections ADD COLUMN is_smart BOOLEAN DEFAULT 0"); } catch (SQLException ignored) {}
             try { stmt.executeUpdate("ALTER TABLE collections ADD COLUMN smart_query TEXT"); } catch (SQLException ignored) {}
+
+            // ── Paper Graph: Relationship provenance columns ──
+            try { stmt.executeUpdate("ALTER TABLE paper_relationships ADD COLUMN confidence REAL DEFAULT 1.0"); } catch (SQLException ignored) {}
+            try { stmt.executeUpdate("ALTER TABLE paper_relationships ADD COLUMN source TEXT DEFAULT 'USER'"); } catch (SQLException ignored) {}
+            try { stmt.executeUpdate("ALTER TABLE paper_relationships ADD COLUMN dismissed INTEGER DEFAULT 0"); } catch (SQLException ignored) {}
+
+            // ── Paper Graph: Workspace notes (freeform sticky notes on canvas) ──
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS workspace_notes (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    x REAL NOT NULL,
+                    y REAL NOT NULL,
+                    width REAL DEFAULT 180,
+                    height REAL DEFAULT 100,
+                    text TEXT DEFAULT '',
+                    color TEXT DEFAULT '#f1c40f',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ── Paper Graph: Workspace groups (named clusters for argument mapping) ──
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS workspace_groups (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    color TEXT DEFAULT '#6c5ce7',
+                    x REAL DEFAULT 0,
+                    y REAL DEFAULT 0,
+                    width REAL DEFAULT 0,
+                    height REAL DEFAULT 0,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS workspace_group_papers (
+                    group_id INTEGER NOT NULL,
+                    paper_id INTEGER NOT NULL,
+                    PRIMARY KEY (group_id, paper_id),
+                    FOREIGN KEY (group_id) REFERENCES workspace_groups(id) ON DELETE CASCADE,
+                    FOREIGN KEY (paper_id) REFERENCES papers(id) ON DELETE CASCADE
+                )
+            """);
+
+            // ── Paper Graph: Annotated edges (custom-labeled connections on Micro canvas) ──
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS workspace_annotated_edges (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    source_paper_id INTEGER NOT NULL,
+                    target_paper_id INTEGER NOT NULL,
+                    label TEXT DEFAULT '',
+                    color TEXT DEFAULT '#4a9cf7',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (source_paper_id) REFERENCES papers(id) ON DELETE CASCADE,
+                    FOREIGN KEY (target_paper_id) REFERENCES papers(id) ON DELETE CASCADE
+                )
+            """);
+
+            // ── Local Semantic Search: Modular, Future-Proof Embeddings Table ──
+            stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS paper_embeddings (
+                    paper_id INTEGER PRIMARY KEY,
+                    model_name TEXT NOT NULL,
+                    model_version TEXT NOT NULL,
+                    vector_blob BLOB NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (paper_id) REFERENCES papers(id) ON DELETE CASCADE
+                )
+            """);
 
             // Default collection
             ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM collections");
@@ -266,6 +360,14 @@ public class SQLiteDatabaseManager {
             stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_paper_tags_paper ON paper_tags(paper_id)");
             stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_pdf_files_paper ON pdf_files(paper_id)");
             stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_paper_groups_paper ON paper_groups(paper_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_paper_rel_source ON paper_relationships(source_paper_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_paper_rel_target ON paper_relationships(target_paper_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_paper_rel_dismissed ON paper_relationships(dismissed)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_workspace_pins_paper ON workspace_pins(paper_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_workspace_group_papers ON workspace_group_papers(group_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_workspace_annotated_src ON workspace_annotated_edges(source_paper_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_workspace_annotated_tgt ON workspace_annotated_edges(target_paper_id)");
+            stmt.executeUpdate("CREATE INDEX IF NOT EXISTS idx_paper_embeddings_model ON paper_embeddings(model_name, model_version)");
 
             System.out.println("[SQLite] All tables ready.");
         }

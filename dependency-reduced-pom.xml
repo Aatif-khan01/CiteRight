@@ -29,7 +29,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
-          <mainClass>com.citeright.CiteRightApp</mainClass>
+          <mainClass>${exec.mainClass}</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -94,7 +94,7 @@
               <versionInfo>
                 <fileVersion>1.0.0.0</fileVersion>
                 <txtFileVersion>1.0.0</txtFileVersion>
-                <fileDescription>CiteRight Reference Manager</fileDescription>
+                <fileDescription>CiteRight</fileDescription>
                 <copyright>2026</copyright>
                 <productVersion>1.0.0.0</productVersion>
                 <txtProductVersion>1.0.0</txtProductVersion>
@@ -109,6 +109,7 @@
     </plugins>
   </build>
   <properties>
+    <exec.mainClass>com.citeright.CiteRightApp</exec.mainClass>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <gson.version>2.11.0</gson.version>

@@ -136,6 +136,24 @@ public class PaperDAO {
     }
 
     /**
+     * Finds a paper by database integer ID.
+     */
+    public Publication findById(int id) {
+        if (!dbManager.isAvailable()) return null;
+        try (Connection conn = dbManager.getConnection()) {
+            if (conn == null) return null;
+            try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM papers WHERE id = ?")) {
+                stmt.setInt(1, id);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) return mapResultSet(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("[PaperDAO] Error finding paper by ID: " + e.getMessage());
+        }
+        return null;
+    }
+
+    /**
      * Finds a paper by paper_id.
      */
     public Publication findByPaperId(String paperId) {
