@@ -65,49 +65,70 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>com.akathist.maven.plugins.launch4j</groupId>
-        <artifactId>launch4j-maven-plugin</artifactId>
-        <version>2.5.3</version>
-        <executions>
-          <execution>
-            <id>l4j-clui</id>
-            <phase>package</phase>
-            <goals>
-              <goal>launch4j</goal>
-            </goals>
-            <configuration>
-              <headerType>gui</headerType>
-              <outfile>${project.build.directory}/CiteRight.exe</outfile>
-              <jar>${project.build.directory}/${project.build.finalName}-standalone.jar</jar>
-              <errTitle>CiteRight Error</errTitle>
-              <classPath>
-                <mainClass>com.citeright.Launcher</mainClass>
-              </classPath>
-              <jre>
-                <path>%JAVA_HOME%;%PATH%</path>
-                <minVersion>21.0.0</minVersion>
-                <opts>
-                  <opt>-Dfile.encoding=UTF-8</opt>
-                </opts>
-              </jre>
-              <versionInfo>
-                <fileVersion>1.0.0.0</fileVersion>
-                <txtFileVersion>1.0.0</txtFileVersion>
-                <fileDescription>CiteRight</fileDescription>
-                <copyright>2026</copyright>
-                <productVersion>1.0.0.0</productVersion>
-                <txtProductVersion>1.0.0</txtProductVersion>
-                <productName>CiteRight</productName>
-                <internalName>CiteRight</internalName>
-                <originalFilename>CiteRight.exe</originalFilename>
-              </versionInfo>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>portable</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>jpackage-portable</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>jpackage</executable>
+                  <arguments>
+                    <argument>--type</argument>
+                    <argument>app-image</argument>
+                    <argument>--name</argument>
+                    <argument>CiteRight</argument>
+                    <argument>--app-version</argument>
+                    <argument>1.0.0</argument>
+                    <argument>--vendor</argument>
+                    <argument>CiteRight</argument>
+                    <argument>--description</argument>
+                    <argument>Smart Citation Manager</argument>
+                    <argument>--input</argument>
+                    <argument>${project.build.directory}</argument>
+                    <argument>--main-jar</argument>
+                    <argument>${project.build.finalName}-standalone.jar</argument>
+                    <argument>--main-class</argument>
+                    <argument>com.citeright.Launcher</argument>
+                    <argument>--dest</argument>
+                    <argument>${project.build.directory}/CiteRight-portable</argument>
+                    <argument>--java-options</argument>
+                    <argument>-Dfile.encoding=UTF-8</argument>
+                    <argument>--java-options</argument>
+                    <argument>-Xmx512m</argument>
+                    <argument>--java-options</argument>
+                    <argument>--add-opens=java.base/java.lang=ALL-UNNAMED</argument>
+                    <argument>--java-options</argument>
+                    <argument>--add-opens=java.base/java.lang.reflect=ALL-UNNAMED</argument>
+                    <argument>--java-options</argument>
+                    <argument>--add-opens=java.base/java.util=ALL-UNNAMED</argument>
+                    <argument>--java-options</argument>
+                    <argument>--add-opens=java.base/java.io=ALL-UNNAMED</argument>
+                    <argument>--icon</argument>
+                    <argument>${project.basedir}/src/main/resources/icon.ico</argument>
+                    <argument>--add-modules</argument>
+                    <argument>java.base,java.desktop,java.logging,java.sql,java.net.http,java.xml,java.naming,jdk.crypto.ec,jdk.unsupported</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
   <properties>
     <exec.mainClass>com.citeright.CiteRightApp</exec.mainClass>
     <maven.compiler.source>21</maven.compiler.source>
