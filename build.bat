@@ -75,13 +75,18 @@ if exist "target\CiteRight-portable" (
     rmdir /s /q "target\CiteRight-portable"
 )
 
+:: Create clean input directory containing only the standalone JAR to avoid recursive packaging loops
+if exist "target\jpackage-input" rmdir /s /q "target\jpackage-input"
+mkdir "target\jpackage-input"
+copy "%STANDALONE_JAR%" "target\jpackage-input\" >nul
+
 jpackage ^
     --type app-image ^
     --name CiteRight ^
     --app-version 1.0.0 ^
     --vendor "CiteRight" ^
     --description "Smart Citation Manager" ^
-    --input target ^
+    --input target\jpackage-input ^
     --main-jar citeright-1.0-SNAPSHOT-standalone.jar ^
     --main-class com.citeright.Launcher ^
     --dest target\CiteRight-portable ^

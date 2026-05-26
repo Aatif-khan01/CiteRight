@@ -211,6 +211,32 @@
             <id>portable</id>
             <build>
                 <plugins>
+                    <!-- Copy standalone JAR to a clean directory to prevent jpackage from recursively packaging target/CiteRight-portable -->
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.3.1</version>
+                        <executions>
+                            <execution>
+                                <id>copy-jar-for-jpackage</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/jpackage-input</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}</directory>
+                                            <includes>
+                                                <include>${project.build.finalName}-standalone.jar</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                     <!-- jpackage: bundle app + trimmed JRE into portable folder -->
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
@@ -242,7 +268,7 @@
 
                                         <!-- Input: folder containing the fat standalone JAR -->
                                         <argument>--input</argument>
-                                        <argument>${project.build.directory}</argument>
+                                        <argument>${project.build.directory}/jpackage-input</argument>
 
                                         <!-- Entry point -->
                                         <argument>--main-jar</argument>
