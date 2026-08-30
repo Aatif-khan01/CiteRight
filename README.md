@@ -4,7 +4,7 @@
 
 **CiteRight** is a self-contained, autonomous desktop research intelligence tool built with a local-first approach. It utilizes a quantized **BGE-M3 multilingual neural embedding** engine to execute complex semantic searches and similarity calculations directly on consumer CPUs without requiring cloud dependencies. 
 
-CiteRight merges your paper collection into an interactive, multi-relational paper graph that captures critical relationships—including research support, methodological extensions, theoretical contradictions, and shared methodologies—complete with confidence scoring and provenance tracking. It also offers optional **Google Gemini** integration to execute deep natural language queries grounded entirely in your local documents.
+CiteRight merges your paper collection into an interactive, multi-relational paper graph that captures critical relationships, including research support, methodological extensions, theoretical contradictions, and shared methodologies, complete with confidence scoring and provenance tracking. It also offers optional **Google Gemini** integration to execute deep natural language queries grounded entirely in your local documents.
 
 Built around a unified, high-performance data layer optimized for local text processing across multiple analysis modules, CiteRight features a hybrid multi-signal ranking system, rigorous evaluation protocols, and a modular engine for discovering research gaps in literature.
 
