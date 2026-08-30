@@ -1,152 +1,156 @@
-# 🕸️ CiteRight
+# 📚 CiteRight
 
-> **Privacy-First, Local-First AI Research Cognition & Reference Manager**
+> **Smart, Privacy-First Academic Reference Manager & Research Reading Environment**
 
-CiteRight is a modern, high-performance reference manager and academic reading environment designed for researchers, academics, and students. By combining a **local-first SQLite database**, **in-process neural embeddings (BGE-M3)**, and **selective cloud-AI reasoning (Gemini API)**, CiteRight transitions your library from a static storage bin into an interactive, externalized scholarly cognition environment—all running entirely on your local machine with zero mandatory cloud dependencies.
-
----
-
-## 🚀 Key Features
-
-### 1. 🕸️ Multi-Scale Paper Graph Visualization
-CiteRight prevents cognitive overload ("graph hairballs") by enforcing progressive disclosure across four distinct views:
-*   **Macro (Topic Landscape):** Renders conceptual "islands" or topic clusters dynamically computed using real-time TF-IDF term clustering. Allows you to see the broad themes of your library at a glance.
-*   **Meso (Ego-Centric Reasoning):** Renders a 1-hop or 2-hop semantic neighborhood centered around a selected paper. Visualizes qualitative relationship edges such as `supports`, `contradicts`, `extends`, and `shares methodology` with confidence scores and reasoning.
-*   **Micro (Workspace Canvas):** A freeform persistent whiteboard. Pin papers, draw custom relationship links, group items into labeled workspace bounds, and add persistent sticky notes to map out your literature reviews.
-*   **Timeline Trajectory:** Maps papers chronologically along a similarity baseline to trace the historical lineage of ideas and methodologies over time.
-
-### 2. 🧠 On-Device Hybrid Semantic Search (BM25 + BGE-M3 Cosine)
-CiteRight features a professional hybrid search ranking engine that scores and sorts your library in milliseconds:
-*   **Lexical Scorer (BM25 & TF-IDF):** Handles precise keyword and terminology matches across title, abstract, and authors.
-*   **Local Neural embeddings:** Computes 1024-dimensional dense semantic vectors locally on your CPU. It executes the state-of-the-art **BGE-M3 multilingual text embedding model** inside the Java process using **Deep Java Library (DJL)** and **ONNX Runtime**.
-*   **Custom Score Fusion:** Merges lexical match, semantic cosine similarity, citation counts, recency, and author matching into a single normalized composite score.
-*   **Offline Fallback:** The local semantic engine dynamically falls back to lexical keyword analysis when local embeddings are not yet calculated, ensuring uninterrupted offline usage.
-
-### 3. 🤖 Grounded Chat & Selective AI Reasoning
-*   **Chat with your Library:** Ask complex synthesis questions grounded entirely in your research. The system retrieves related contexts from local papers and uses Google's Gemini API for semantic answers.
-*   **Selectively Executed AI:** High-cost cloud LLM calls are reserved for high-value synthesis (e.g., determining whether Paper A *supports* or *contradicts* Paper B) or user-initiated evidence extraction.
-*   **Rate-Limit Aware:** Respects Gemini's free tier quotas (15 RPM / 1,500 RPD). Automatically falls back to the local semantic rule engine when quotas are exhausted.
-
-### 4. 📄 Native PDF Viewer & Annotation Studio
-*   **Built-in Reader:** Powered by Apache PDFBox. View papers instantly within the interface without needing external readers.
-*   **Interactive Annotations:** Highlight text in yellow, draw freehand over diagrams, or drop note markers directly on PDF pages.
-*   **Collapsible Panel:** Keep track of all page annotations in a sidebar, which can be collapsed at any time to maximize reading space.
-
-### 5. 📑 1-Click Citation Generator
-*   Instantly copy citations in **APA**, **MLA**, **IEEE**, or **Harvard** formats directly from search cards or the detail panel to your clipboard.
-
-### 6. 📦 Cross-Platform Portability & Custom JRE Bundling
-*   Built as a fully self-contained portable application using Java 21's `jpackage`.
-*   Includes a trimmed down Java runtime (JRE) containing only the necessary modules, meaning the application **runs out-of-the-box on other devices without installing Java or JavaFX**.
+CiteRight is a modern desktop reference manager and academic reading workstation designed for students, researchers, and scholars. It brings all your research papers, PDFs, notes, annotations, and citations into a fast, unified, and intuitive interface—running 100% locally on your computer with complete privacy.
 
 ---
 
-## 🏗️ System Architecture
+## ✨ What is CiteRight?
 
-```mermaid
-graph TD
-    UI[JavaFX Desktop UI] --> LibraryService[Library Service]
-    LibraryService --> DB[(Local SQLite Database)]
-    LibraryService --> PDFViewer[PDF Annotation Studio]
-    
-    SearchEngine[Hybrid Search Engine] --> BM25[Local BM25 Scorer]
-    SearchEngine --> BGE[Local BGE-M3 ONNX Engine]
-    SearchEngine --> DB
-    
-    GraphService[Graph Service] --> Macro[Macro Topic Clustering]
-    GraphService --> Meso[Meso AI/Local Relationship Inference]
-    GraphService --> Micro[Micro Freeform Canvas & Workspace Notes]
-    GraphService --> Timeline[Timeline Chronological Trajectory]
-    
-    Meso --> GeminiService[Gemini API Cloud LLM]
-    Meso --> LocalRule[Local Semantic Rule Engine]
-    
-    BGE --> DJL[Deep Java Library / ONNX Runtime]
-    DJL --> LocalCPU[In-Process CPU Inference]
-```
+When conducting research, managing dozens or hundreds of PDF files across folders and clunky tools quickly becomes overwhelming. **CiteRight** solves this by providing:
+
+* **Centralized Library:** Keep all your research papers, journals, conference articles, and books organized in one place.
+* **Built-in PDF Studio:** Read papers, highlight text, draw annotations, and add notes without needing external PDF readers.
+* **Instant Hybrid Search:** Find exact claims, keywords, and topics across your entire document collection in milliseconds.
+* **AI Research Assistant:** Connect your free Google Gemini API key to ask questions grounded directly in your own papers.
+* **Visual Paper Graph:** Explore connections, topic clusters, and relationships between papers on an interactive visual canvas.
+* **1-Click Citations:** Copy properly formatted citations in APA, MLA, IEEE, and Harvard styles instantly to your clipboard.
+* **100% Privacy & Local Storage:** No mandatory accounts, no cloud sync lock-in, and zero tracking. All your database records and PDFs stay on your machine.
 
 ---
 
-## 🛠️ Technology Stack
+## 📥 Download & Installation
 
-*   **Core Runtime:** Java 21 (JDK 21 LTS)
-*   **Graphics & GUI:** JavaFX 21 (Hardware-accelerated rendering)
-*   **Database:** SQLite (embedded, zero-config, highly portable)
-*   **Local NLP Engines:** BM25, TF-IDF, TextRank Summarization
-*   **Local AI Inference:** Deep Java Library (DJL), ONNX Runtime, HuggingFace Tokenizers
-*   **Embeddings Model:** BGE-M3 Multilingual (1024-d dense vectors, locally stored)
-*   **Cloud AI Model:** Gemini Pro (via REST API)
-*   **PDF Parsing & Annotation:** Apache PDFBox 3.0
-*   **Serialization:** Google Gson
-*   **Build Tool:** Maven
+CiteRight comes bundled with its own self-contained runtime. **You do not need to install Java or any third-party software.**
+
+### Windows Installer (.exe)
+1. Download **`CiteRight-1.0.0.exe`** from this repository (or from the Releases page).
+2. Double-click the installer and follow the setup wizard.
+3. Choose your installation folder and create a Desktop shortcut.
+4. Launch **CiteRight** from your Start Menu or Desktop!
 
 ---
 
-## 📂 Project Directory Structure
+## 📖 User Manual & Guide
 
-```
-CiteRight/
-│
-├── src/main/java/com/citeright/
-│   ├── CiteRightApp.java        # Application initialization & GUI root
-│   ├── Launcher.java            # Main entry point (workaround for fat JARs)
-│   │
-│   ├── ai/                      # Local BGE-M3 & cloud Gemini API bindings
-│   ├── database/                # SQLite DAOs (Library, Workspaces, Annotations)
-│   ├── model/                   # Paper, Relationship, and Note schemas
-│   ├── nlp/                     # Lexical scorers, summarizers, text processing
-│   ├── ranking/                 # Multi-factor search ranking & fusion logic
-│   ├── search/                  # Web APIs (EuropePMC, Crossref, SemanticScholar)
-│   └── ui/                      # Custom JavaFX components & graph layouts
-│
-├── build.bat                    # One-click portable build script
-├── run.bat                      # Fast developer run script
-├── MANUAL.md                    # Detailed, step-by-step user manual
-├── DESIGN_RESEARCH_GRAPH.md     # Architectural design spec for the Paper Graph
-└── pom.xml                      # Maven project configuration (jpackage & shading)
-```
+### 1. Interface & Layout Overview
+
+When you open CiteRight, the interface is organized into four main sections designed for maximum productivity:
+
+* **Top Navigation Bar:** Switch between core tabs (**Library**, **Search & Discovery**, **Paper Graph**, and **AI Chat**).
+* **Left Navigation Sidebar:** Access your paper collections (**All Papers**, **Favorites**, and **Unsorted**) and find the **"+ Add Entry"** button.
+* **Center Workspace:** Your primary workspace. In the Library view, it displays your paper table; in the PDF view, it renders your active document.
+* **Right Detail Panel:** Displays full paper metadata (Title, Authors, Abstract, Year, Venue), reading stats, 1-click citation buttons, and the "Find Similar Papers" tool.
 
 ---
 
-## 🛠️ Development & Build Guide
+### 2. Adding & Organizing Papers
 
-### Prerequisites
-To build the project locally, your development machine requires:
-1.  **Java 21 JDK** (configured on your system `PATH`)
-2.  **Maven** (configured on your system `PATH`)
+#### Adding a Paper
+1. Click the **"+ Add Entry"** button at the bottom of the left sidebar.
+2. Choose one of two options:
+   * **Import PDF:** Click import or drag & drop any PDF file. CiteRight automatically extracts the title, authors, and abstract.
+   * **Manual Entry:** Type the Title, Authors, Year, Abstract, and Publication Venue, then click **Save**.
 
-### Fast Run (Developer Mode)
-To compile and run the application instantly from the source directory, run:
-```bash
-run.bat
-```
-*(This is faster than packaging the JRE and runs the fat JAR directly using your local Java environment).*
-
-### Creating a Self-Contained Portable Release
-To bundle the JRE and package the application into a distribution zip, run:
-```bash
-build.bat
-```
-This script will:
-1.  Clean and package the Maven project into a standalone fat JAR (`target/citeright-1.0-SNAPSHOT-standalone.jar`).
-2.  Set up a clean staging folder (`target/jpackage-input`) to prevent recursive loops.
-3.  Run `jpackage` to bundle a custom-trimmed runtime and compile `CiteRight.exe` with its native icon.
-4.  Compress the output folder into a distributable `CiteRight-Portable.zip`.
+#### Organizing Collections
+* **Favorites (❤️):** Select any paper, then click the Heart icon in the Right Detail Panel to bookmark it into your Favorites folder.
+* **Unsorted:** All newly imported items appear in Unsorted until you organize them.
 
 ---
 
-## 📂 Data Storage & Portability
+### 3. Native PDF Reader & Annotation Studio
 
-CiteRight is built to protect your privacy and ensure your data remains under your control:
-*   **User Directory:** All library assets are stored in the user home directory:
-    ```
-    C:\Users\YourUsername\.citeright\
-    ```
-*   **Database:** `library.db` (SQLite) stores all your text metadata, annotations, graph relationships, and whiteboard notes.
-*   **PDF Storage:** The `pdfs/` subfolder holds copies of all imported PDF documents.
-*   **No Cloud Lock-In:** You can back up or migrate your entire research environment by copying the `.citeright` directory to another machine.
+You never need to leave CiteRight to read or annotate papers.
+
+#### Reading a PDF
+1. Select any paper from your library list.
+2. In the Right Detail Panel, click the **"Read PDF"** button.
+3. The center workspace will instantly display the full document.
+
+#### Annotating
+Use the interactive toolbar at the top of the PDF viewer:
+* **Highlight (🖊️):** Click the highlighter, then drag over any text to highlight it.
+* **Draw (🖌️):** Draw freehand annotations or diagrams directly onto pages.
+* **Sticky Notes (📝):** Click the note tool and click anywhere on a page to attach a comment or summary.
+
+#### Annotations Sidebar
+All notes and highlights are listed in the right-side annotation sidebar. Click **"Hide"** or toggle the `📝` icon in the top bar to collapse it whenever you want a distraction-free, full-screen reading mode.
+
+---
+
+### 4. Smart Search & Evidence Discovery
+
+#### Running a Search
+1. Click the **Search** tab in the top navigation bar.
+2. Enter keywords, research questions, or author names (e.g., *"neural attention mechanisms in medical imaging"*).
+3. CiteRight ranks matching papers and displays rich result cards.
+
+#### AI Evidence Extraction
+1. On any search result card, click **"✨ Extract Evidence (AI)"**.
+2. CiteRight scans the document's content and extracts the exact sentences answering your search query.
+3. The extracted finding is displayed directly in the result card.
+
+#### Finding Similar Papers
+Select any paper in your library and click **"Find Similar Papers"** in the Right Detail Panel to find related papers in your collection based on topic and abstract similarity.
+
+---
+
+### 5. Chat with Your Library (AI Integration)
+
+CiteRight lets you converse with your research library using Google Gemini AI.
+
+#### Setup (Free Gemini API Key)
+1. Click the **AI Chat** tab in the top navigation bar.
+2. Click the **Settings (⚙️)** icon in the chat header.
+3. Select **Gemini** and paste your free API key from [Google AI Studio](https://aistudio.google.com/).
+4. Click **Save**.
+
+#### Using AI Chat
+* Ask questions such as:
+  * *"Summarize the key findings across all my papers on transformer models."*
+  * *"Which papers in my library discuss battery degradation?"*
+  * *"Compare the methodologies used in Smith 2023 vs. Johnson 2024."*
+* CiteRight retrieves relevant contexts from your local library and provides grounded, synthesized answers.
+
+---
+
+### 6. Visualizing Connections (Paper Graph)
+
+The **Paper Graph** provides an interactive visual map of your research library:
+
+1. Click the **Paper Graph** tab in the top navigation bar.
+2. View papers as nodes and their semantic and citation relationships as connected edges.
+3. **Drag and move nodes** to organize your thinking and explore topic clusters.
+4. **Click any node** to instantly load that paper's metadata and citations into the Detail Panel.
+
+---
+
+### 7. Generating Citations (1-Click Copy)
+
+Whenever you need to cite a paper in your writing:
+1. Select the paper in the **Library** or **Search** view.
+2. Look at the **"Cite as:"** bar in the Right Detail Panel.
+3. Click your preferred format: **[APA]**, **[MLA]**, **[IEEE]**, or **[Harvard]**.
+4. The formatted citation is automatically copied to your clipboard—ready to paste (`Ctrl+V`) into Word, Google Docs, or LaTeX!
+
+---
+
+### 8. Data Privacy, Storage & Backups
+
+CiteRight is built from the ground up to respect your privacy:
+
+* **Zero Cloud Lock-In:** Your papers and annotations are never uploaded to third-party databases.
+* **Storage Location:** All data is kept in your user folder:
+  ```
+  C:\Users\<YourUsername>\.citeright\
+  ├── library.db      (SQLite database with all metadata, notes & citations)
+  └── pdfs\           (All imported PDF documents)
+  ```
+* **Easy Backups & Migration:** To back up or move CiteRight to a new computer, simply copy the `.citeright` folder to your new PC.
 
 ---
 
 ## 📄 License
-CiteRight is open-source. For more details on the features and how to configure your Gemini API Key, refer to the [MANUAL.md](file:///c:/Users/atifm/OneDrive/Desktop/java%20project/MANUAL.md).
+
+CiteRight is distributed for research and academic use. All rights reserved.

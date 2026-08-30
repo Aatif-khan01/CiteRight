@@ -1,0 +1,24 @@
+CITERIGHT END USER LICENSE AGREEMENT (EULA)
+
+Copyright (c) 2024-2026 Aatif Muneeb Khan. All Rights Reserved.
+
+IMPORTANT - READ CAREFULLY:
+This End User License Agreement ("EULA") is a legal agreement between you (either an individual or a single entity) and Aatif Muneeb Khan for the software product CiteRight ("Software"), including any associated executable binaries, bundled runtime components, documentation, and online services.
+
+1. PROPRIETARY SOFTWARE & GRANT OF LICENSE
+CiteRight is proprietary, closed-source desktop software. Subject to the terms of this EULA, Aatif Muneeb Khan grants you a personal, non-exclusive, non-transferable, limited license to install and run the executable binary version of the Software for your personal or organizational research use.
+
+2. RESTRICTIONS ON USE
+You may NOT:
+(a) Reverse engineer, decompile, disassemble, modify, adapt, or attempt to derive the source code, trade secrets, or underlying architecture of the Software.
+(b) Sell, rent, lease, sublicense, distribute, host, or commercially exploit the Software without prior explicit written permission from the copyright owner.
+(c) Remove, alter, or obscure any copyright, trademark, or proprietary rights notices contained in or on the Software.
+
+3. INTELLECTUAL PROPERTY & OWNERSHIP
+The Software, including its software architecture, neural engines, UI design, brand, and documentation, is the valuable intellectual property of Aatif Muneeb Khan. All title, ownership, and intellectual property rights in and to the Software remain exclusively with Aatif Muneeb Khan.
+
+4. DISCLAIMER OF WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING FROM THE USE OF THE SOFTWARE.
+
+5. TERMINATION
+This license is effective until terminated. Your rights under this agreement will terminate automatically without notice if you fail to comply with any term(s) of this EULA. Upon termination, you must cease all use and destroy all copies of the Software in your possession.
