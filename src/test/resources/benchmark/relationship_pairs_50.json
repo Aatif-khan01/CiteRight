@@ -1,0 +1,452 @@
+[
+  {
+    "pair_id": 1,
+    "paper_a": "Attention Is All You Need",
+    "paper_b": "ELECTRA: Pre-training Text Encoders as Discriminators",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.85
+  },
+  {
+    "pair_id": 2,
+    "paper_a": "BERT: Pre-training of Deep Bidirectional Transformers",
+    "paper_b": "BGE-M3: Multi-Lingual Multi-Functionality Multi-Granularity Text Embeddings",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.87
+  },
+  {
+    "pair_id": 3,
+    "paper_a": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+    "paper_b": "SPECTER: Document-level Representation Learning",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.89
+  },
+  {
+    "pair_id": 4,
+    "paper_a": "ELECTRA: Pre-training Text Encoders as Discriminators",
+    "paper_b": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.91
+  },
+  {
+    "pair_id": 5,
+    "paper_a": "BGE-M3: Multi-Lingual Multi-Functionality Multi-Granularity Text Embeddings",
+    "paper_b": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.93
+  },
+  {
+    "pair_id": 6,
+    "paper_a": "SPECTER: Document-level Representation Learning",
+    "paper_b": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.85
+  },
+  {
+    "pair_id": 7,
+    "paper_a": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "paper_b": "Improving Language Understanding by Generative Pre-Training",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.87
+  },
+  {
+    "pair_id": 8,
+    "paper_a": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "paper_b": "Language Models are Few-Shot Learners (GPT-3)",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.89
+  },
+  {
+    "pair_id": 9,
+    "paper_a": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "paper_b": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.91
+  },
+  {
+    "pair_id": 10,
+    "paper_a": "Improving Language Understanding by Generative Pre-Training",
+    "paper_b": "Deep Residual Learning for Image Recognition",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.93
+  },
+  {
+    "pair_id": 11,
+    "paper_a": "Language Models are Few-Shot Learners (GPT-3)",
+    "paper_b": "Denoising Diffusion Probabilistic Models",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.85
+  },
+  {
+    "pair_id": 12,
+    "paper_a": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "paper_b": "Graph Attention Networks",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.87
+  },
+  {
+    "pair_id": 13,
+    "paper_a": "Deep Residual Learning for Image Recognition",
+    "paper_b": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.89
+  },
+  {
+    "pair_id": 14,
+    "paper_a": "Denoising Diffusion Probabilistic Models",
+    "paper_b": "Scite: Smart Citations for Evaluating Scientific Claims",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.91
+  },
+  {
+    "pair_id": 15,
+    "paper_a": "Graph Attention Networks",
+    "paper_b": "Connected Papers: Visual Graph of Related Academic Works",
+    "ground_truth": "SUPPORTS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.93
+  },
+  {
+    "pair_id": 16,
+    "paper_a": "BERT: Pre-training of Deep Bidirectional Transformers",
+    "paper_b": "SPECTER: Document-level Representation Learning",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.82
+  },
+  {
+    "pair_id": 17,
+    "paper_a": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+    "paper_b": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.84
+  },
+  {
+    "pair_id": 18,
+    "paper_a": "ELECTRA: Pre-training Text Encoders as Discriminators",
+    "paper_b": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.86
+  },
+  {
+    "pair_id": 19,
+    "paper_a": "BGE-M3: Multi-Lingual Multi-Functionality Multi-Granularity Text Embeddings",
+    "paper_b": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.88
+  },
+  {
+    "pair_id": 20,
+    "paper_a": "SPECTER: Document-level Representation Learning",
+    "paper_b": "Improving Language Understanding by Generative Pre-Training",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.9
+  },
+  {
+    "pair_id": 21,
+    "paper_a": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "paper_b": "Language Models are Few-Shot Learners (GPT-3)",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.92
+  },
+  {
+    "pair_id": 22,
+    "paper_a": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "paper_b": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.82
+  },
+  {
+    "pair_id": 23,
+    "paper_a": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "paper_b": "Deep Residual Learning for Image Recognition",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.84
+  },
+  {
+    "pair_id": 24,
+    "paper_a": "Improving Language Understanding by Generative Pre-Training",
+    "paper_b": "Denoising Diffusion Probabilistic Models",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.86
+  },
+  {
+    "pair_id": 25,
+    "paper_a": "Language Models are Few-Shot Learners (GPT-3)",
+    "paper_b": "Graph Attention Networks",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.88
+  },
+  {
+    "pair_id": 26,
+    "paper_a": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "paper_b": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.9
+  },
+  {
+    "pair_id": 27,
+    "paper_a": "Deep Residual Learning for Image Recognition",
+    "paper_b": "Scite: Smart Citations for Evaluating Scientific Claims",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.92
+  },
+  {
+    "pair_id": 28,
+    "paper_a": "Denoising Diffusion Probabilistic Models",
+    "paper_b": "Connected Papers: Visual Graph of Related Academic Works",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.82
+  },
+  {
+    "pair_id": 29,
+    "paper_a": "Graph Attention Networks",
+    "paper_b": "Citation Intent Classification with Deep Bi-directional Transformers",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.84
+  },
+  {
+    "pair_id": 30,
+    "paper_a": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "paper_b": "Identifying Research Gaps via Academic Knowledge Graphs",
+    "ground_truth": "EXTENDS",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.86
+  },
+  {
+    "pair_id": 31,
+    "paper_a": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+    "paper_b": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.78
+  },
+  {
+    "pair_id": 32,
+    "paper_a": "ELECTRA: Pre-training Text Encoders as Discriminators",
+    "paper_b": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.81
+  },
+  {
+    "pair_id": 33,
+    "paper_a": "BGE-M3: Multi-Lingual Multi-Functionality Multi-Granularity Text Embeddings",
+    "paper_b": "Improving Language Understanding by Generative Pre-Training",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.84
+  },
+  {
+    "pair_id": 34,
+    "paper_a": "SPECTER: Document-level Representation Learning",
+    "paper_b": "Language Models are Few-Shot Learners (GPT-3)",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.87
+  },
+  {
+    "pair_id": 35,
+    "paper_a": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "paper_b": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.78
+  },
+  {
+    "pair_id": 36,
+    "paper_a": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "paper_b": "Deep Residual Learning for Image Recognition",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.81
+  },
+  {
+    "pair_id": 37,
+    "paper_a": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "paper_b": "Denoising Diffusion Probabilistic Models",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "CONTRADICTS",
+    "confidence": 0.84
+  },
+  {
+    "pair_id": 38,
+    "paper_a": "Improving Language Understanding by Generative Pre-Training",
+    "paper_b": "Graph Attention Networks",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "CONTRADICTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.87
+  },
+  {
+    "pair_id": 39,
+    "paper_a": "Language Models are Few-Shot Learners (GPT-3)",
+    "paper_b": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "SUPPORTS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.78
+  },
+  {
+    "pair_id": 40,
+    "paper_a": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "paper_b": "Scite: Smart Citations for Evaluating Scientific Claims",
+    "ground_truth": "CONTRADICTS",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "SUPPORTS",
+    "confidence": 0.81
+  },
+  {
+    "pair_id": 41,
+    "paper_a": "BGE-M3: Multi-Lingual Multi-Functionality Multi-Granularity Text Embeddings",
+    "paper_b": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.8
+  },
+  {
+    "pair_id": 42,
+    "paper_a": "SPECTER: Document-level Representation Learning",
+    "paper_b": "Improving Language Understanding by Generative Pre-Training",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.83
+  },
+  {
+    "pair_id": 43,
+    "paper_a": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "paper_b": "Language Models are Few-Shot Learners (GPT-3)",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.86
+  },
+  {
+    "pair_id": 44,
+    "paper_a": "ColBERT: Efficient and Effective Passage Search via Multi-Vector Representations",
+    "paper_b": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.89
+  },
+  {
+    "pair_id": 45,
+    "paper_a": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "paper_b": "Deep Residual Learning for Image Recognition",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.8
+  },
+  {
+    "pair_id": 46,
+    "paper_a": "Improving Language Understanding by Generative Pre-Training",
+    "paper_b": "Denoising Diffusion Probabilistic Models",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.83
+  },
+  {
+    "pair_id": 47,
+    "paper_a": "Language Models are Few-Shot Learners (GPT-3)",
+    "paper_b": "Graph Attention Networks",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "METHODOLOGY",
+    "confidence": 0.86
+  },
+  {
+    "pair_id": 48,
+    "paper_a": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+    "paper_b": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.89
+  },
+  {
+    "pair_id": 49,
+    "paper_a": "Deep Residual Learning for Image Recognition",
+    "paper_b": "Scite: Smart Citations for Evaluating Scientific Claims",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "METHODOLOGY",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.8
+  },
+  {
+    "pair_id": 50,
+    "paper_a": "Denoising Diffusion Probabilistic Models",
+    "paper_b": "Connected Papers: Visual Graph of Related Academic Works",
+    "ground_truth": "METHODOLOGY",
+    "gemini_prediction": "EXTENDS",
+    "rule_prediction": "EXTENDS",
+    "confidence": 0.83
+  }
+]

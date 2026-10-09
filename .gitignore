@@ -1,0 +1,44 @@
+# Build and target artifacts
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.exe
+*.wixobj
+
+# IDE and local editor artifacts
+.zcode/
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+temp_*.txt
+check_*.txt
+dependency-reduced-pom.xml
+/*.png
+/Ancient India and Artificial Intelligence- From Timeless Wisdom to Transformative Technology.pdf
+
+# Unpublished conference manuscript, references, templates, and confidential review response sheets
+/citeright_chapter.*
+/citeright_refs.bib
+/Response_to_Reviewers.*
+/CiteRight_Lab_Report.*
+/llncs.cls
+/splncs04.bst
