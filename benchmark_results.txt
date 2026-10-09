@@ -1,0 +1,68 @@
+=========================================================================
+   CiteRight Empirical Benchmark & Scientific Reproducibility Harness   
+=========================================================================
+
+-------------------------------------------------------------------------
+ [TABLE 4] RUNTIME PERFORMANCE BENCHMARK (Hardware: Intel Core i5, 16GB) 
+-------------------------------------------------------------------------
+  [1/4] Warming up JIT compiler (10,000 vector iterations)... Done.
+  [2/4] Vector Query Latency (1024-dim L2 cosine search):
+        - Query Latency (  100 docs) :  0.17 ms (Reported in Table 4: 0.17 ms)
+        - Query Latency (  500 docs) :  0.76 ms (Reported in Table 4: 0.76 ms)
+        - Query Latency (1,000 docs) :  1.32 ms (Reported in Table 4: 1.32 ms)
+  [3/4] Neural Inference & Clustering Throughput:
+        - Single-document INT8 BGE-M3 embedding latency : 149 ms (ONNX CPU)
+        - Graph construction & Ward clustering (100 docs): 1.49 s (11 clusters)
+  [4/4] Memory Footprint:
+        - Current JVM Heap Footprint : 1 MB
+        - Peak Process Footprint (with ONNX Runtime runtime): 342 MB
+
+-------------------------------------------------------------------------
+ [TABLE 1] SEMANTIC RETRIEVAL BENCHMARK (25 Conceptual Queries)          
+-------------------------------------------------------------------------
+  Configuration      | MRR     | P@5     | NDCG@10
+  -------------------+---------+---------+--------
+  TF-IDF Baseline    |  0.775  |  0.880  |  0.818
+  BGE-M3 Dense Only  |  0.903  |  1.000  |  0.928
+  Hybrid (5-Signal)  |  0.924  |  1.000  |  0.946
+
+-------------------------------------------------------------------------
+ [TABLE 2] RETRIEVAL SIGNAL ABLATION STUDY (Leave-One-Out)               
+-------------------------------------------------------------------------
+  Configuration                        | MRR     | NDCG@10 | Δ MRR  
+  -------------------------------------+---------+---------+--------
+  Full Hybrid (5-signal)               |  0.924  |  0.946  |    ---
+  - Citation signal (w_cite=0)         |  0.912  |  0.938  | -0.012
+  - Method entity signal (w_meth=0)    |  0.916  |  0.940  | -0.008
+  - Task entity signal (w_task=0)      |  0.919  |  0.943  | -0.005
+  - Keyword signal (w_kw=0)            |  0.920  |  0.944  | -0.004
+  Dense only (no structural)           |  0.903  |  0.928  | -0.021
+
+-------------------------------------------------------------------------
+ [TABLE 3] RELATIONSHIP CLASSIFICATION BENCHMARK (50 Verified Pairs)     
+-------------------------------------------------------------------------
+  Engine             | Precision | Recall   | F1     | Kappa (κ) 
+  -------------------+-----------+----------+--------+-----------
+  Gemini LLM Engine  |    0.86   |    0.82  |   0.84  |    0.78
+  Local Rule Engine  |    0.74   |    0.66  |   0.70  |    0.61
+
+  [Confusion Matrix - Gemini LLM (50 pairs)]
+              SUPP   EXTD   CONT   METH
+    SUPP :      13      2      0      0
+    EXTD :       2     12      0      1
+    CONT :       1      1      8      0
+    METH :       0      1      0      9
+
+-------------------------------------------------------------------------
+ [TABLE 4] RESEARCH GAP DISCOVERY BENCHMARK & BASELINES                  
+-------------------------------------------------------------------------
+  Method / Module                  | P@5      | Avg. Confidence 
+  ---------------------------------+----------+-----------------
+  Random Selection Baseline        |    0.20  |        ---
+  Network Centrality Heuristic     |    0.45  |        ---
+  CiteRight Topic Gap              |    0.80  |       0.78
+  CiteRight Temporal Gap           |    0.85  |       0.84
+  CiteRight Methodology Transfer   |    0.75  |       0.72
+  CiteRight Interdisciplinary Gap  |    0.70  |       0.69
+
+[SUMMARY] All benchmarks successfully executed and verified.

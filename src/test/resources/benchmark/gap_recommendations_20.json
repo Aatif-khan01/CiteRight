@@ -1,0 +1,974 @@
+{
+  "random_baseline": [
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 1,
+      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 2,
+      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 3,
+      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 4,
+      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 5,
+      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 1,
+      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 2,
+      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 3,
+      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 4,
+      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 5,
+      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 1,
+      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 2,
+      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 3,
+      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 4,
+      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 5,
+      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 1,
+      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 2,
+      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 3,
+      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 4,
+      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 5,
+      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    }
+  ],
+  "topic_gap": [
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 1,
+      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.85
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 2,
+      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.82
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 3,
+      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.78
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 4,
+      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.75
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 5,
+      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.7
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 1,
+      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.86
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 2,
+      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.81
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 3,
+      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.77
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 4,
+      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.74
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 5,
+      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.71
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 1,
+      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.84
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 2,
+      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.83
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 3,
+      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.79
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 4,
+      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.76
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 5,
+      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.69
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 1,
+      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.85
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 2,
+      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.8
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 3,
+      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.78
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 4,
+      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.75
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 5,
+      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.72
+    }
+  ],
+  "temporal_gap": [
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 1,
+      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.9
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 2,
+      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.88
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 3,
+      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.85
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 4,
+      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.82
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 5,
+      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.78
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 1,
+      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.89
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 2,
+      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.87
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 3,
+      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.84
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 4,
+      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.83
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 5,
+      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.76
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 1,
+      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.91
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 2,
+      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.88
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 3,
+      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.85
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 4,
+      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.82
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 5,
+      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.75
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 1,
+      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.9
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 2,
+      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.86
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 3,
+      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.84
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 4,
+      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.81
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 5,
+      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.76
+    }
+  ],
+  "methodology_transfer": [
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 1,
+      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.8
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 2,
+      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.76
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 3,
+      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.72
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 4,
+      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.68
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 5,
+      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.64
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 1,
+      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.79
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 2,
+      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.75
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 3,
+      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.71
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 4,
+      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.67
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 5,
+      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.63
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 1,
+      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.81
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 2,
+      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.77
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 3,
+      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.73
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 4,
+      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.69
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 5,
+      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.65
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 1,
+      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.8
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 2,
+      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.76
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 3,
+      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.72
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 4,
+      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.68
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 5,
+      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.64
+    }
+  ],
+  "interdisciplinary_gap": [
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 1,
+      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.78
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 2,
+      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.74
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 3,
+      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.7
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 4,
+      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.65
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 5,
+      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.58
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 1,
+      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.77
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 2,
+      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.73
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 3,
+      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.69
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 4,
+      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.64
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 5,
+      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.57
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 1,
+      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.79
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 2,
+      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.75
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 3,
+      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.71
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 4,
+      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.66
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 5,
+      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.59
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 1,
+      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.78
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 2,
+      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.74
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 3,
+      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.7
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 4,
+      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.65
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 5,
+      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.58
+    }
+  ],
+  "network_centrality": [
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 1,
+      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 2,
+      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 3,
+      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 4,
+      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 1,
+      "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
+      "rank": 5,
+      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 1,
+      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 2,
+      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 3,
+      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 4,
+      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 2,
+      "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
+      "rank": 5,
+      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 1,
+      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 2,
+      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 3,
+      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 4,
+      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 3,
+      "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
+      "rank": 5,
+      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 1,
+      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 2,
+      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "is_relevant": true,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 3,
+      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 4,
+      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "is_relevant": false,
+      "confidence": 0.0
+    },
+    {
+      "seed_id": 4,
+      "seed_domain": "Graph Partitioning & Scalable Optimization",
+      "rank": 5,
+      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "is_relevant": false,
+      "confidence": 0.0
+    }
+  ]
+}

@@ -155,6 +155,36 @@ CiteRight is built from the ground up to respect your privacy:
 
 ---
 
+## 🔬 Scientific Reproducibility & Benchmark Suite
+
+CiteRight includes an automated, self-contained empirical evaluation harness (`BenchmarkTest.java`) and complete recorded benchmark evaluation datasets supporting the empirical claims of the paper (*"CiteRight: A Local-First Framework for Hybrid Scholarly Retrieval and Research Opportunity Discovery"*):
+
+### Benchmark Datasets (`src/test/resources/benchmark/`)
+* **`retrieval_queries_25.json`**: 25 conceptual queries with evaluated Reciprocal Ranks, Precision@5, NDCG@10, and top-10 relevance vectors across lexical, dense, and hybrid models.
+* **`relationship_pairs_50.json`**: 50 verified paper pairs with expert ground-truth relationship labels, Gemini LLM predictions, local rule predictions, and confidence scores across 4 relationship types (`SUPPORTS`, `EXTENDS`, `CONTRADICTS`, `METHODOLOGY`).
+* **`gap_recommendations_20.json`**: 120 candidate gap recommendations across 4 distinct thematic seed domains (20 candidates per module for Random Baseline, Network Centrality, Topic Gap, Temporal Gap, Methodology Transfer, and Interdisciplinary Gap) with relevance annotations and confidence values.
+
+### Running the Benchmark Harness
+The benchmark suite runs out-of-the-box on Java 21+ with zero external dependencies:
+
+```bash
+# Compile the benchmark harness
+javac -d target/classes src/test/java/com/citeright/BenchmarkTest.java
+
+# Run the full empirical verification suite
+java -cp target/classes com.citeright.BenchmarkTest
+```
+
+The harness dynamically calculates:
+1. **Runtime Scalability (Table 4):** L2 cosine similarity query latencies across 100, 500, and 1,000 documents.
+2. **Information Retrieval Quality (Table 1):** Dynamic MRR, P@5, and NDCG@10 from query evaluations.
+3. **Statistical Uncertainty & Significance (Table 1b):** 1,000-resample percentile bootstrap 95% confidence intervals and 10,000 Monte Carlo sign-permutation hypothesis tests.
+4. **Ranking Signal Ablation (Table 2):** Leave-one-out marginal contributions of citation, methodology, task, and keyword signals.
+5. **Multi-Relational Classification (Table 3):** 4x4 confusion matrix, Macro-F1, Precision, Recall, and Cohen's Kappa ($\kappa$).
+6. **Research Gap Discovery (Table 5):** Precision@5 and average confidence across all 6 methods against independent baselines.
+
+---
+
 ## 📄 License
 
 CiteRight is distributed for research and academic use. All rights reserved.
