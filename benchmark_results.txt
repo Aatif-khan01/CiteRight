@@ -11,11 +11,11 @@
 -------------------------------------------------------------------------
   [1/4] Warming up JIT compiler (10,000 vector iterations)... Done.
   [2/4] Vector Query Latency (synthetic 1024-dim vectors, brute-force cosine, measured):
-        - Query Latency (   100 docs) :   0.199 ms   | JVM heap after build: 1 MB
-        - Query Latency (   500 docs) :   0.953 ms   | JVM heap after build: 3 MB
-        - Query Latency ( 1,000 docs) :   1.878 ms   | JVM heap after build: 5 MB
-        - Query Latency ( 5,000 docs) :   9.032 ms   | JVM heap after build: 21 MB
-        - Query Latency (10,000 docs) :  21.709 ms   | JVM heap after build: 40 MB
+        - Query Latency (   100 docs) :   0.214 ms   | JVM heap after build: 1 MB
+        - Query Latency (   500 docs) :   0.987 ms   | JVM heap after build: 3 MB
+        - Query Latency ( 1,000 docs) :   2.049 ms   | JVM heap after build: 5 MB
+        - Query Latency ( 5,000 docs) :  10.506 ms   | JVM heap after build: 21 MB
+        - Query Latency (10,000 docs) :  20.942 ms   | JVM heap after build: 40 MB
         (Median of 5 trials; values vary by machine.)
   [3/4] Not measured: end-to-end embedding latency, graph-construction time and peak
         process memory were not independently remeasured and are omitted. The figures above
@@ -38,10 +38,16 @@
     - BGE-M3 Dense Only : MRR = 0.900 [0.820, 0.960],  P@5 = 1.000 [1.000, 1.000], NDCG@10 = 0.939 [0.920, 0.959]
     - Hybrid (5-Signal) : MRR = 0.940 [0.880, 1.000],  P@5 = 1.000 [1.000, 1.000], NDCG@10 = 0.958 [0.934, 0.976]
 
-  Paired One-Sided Permutation Tests (H1: delta > 0; 10,000 resamples, seed=1):
-    - Dense vs. TF-IDF  : ?MRR = +0.127, p = 0.0023 (statistically significant, ? = 0.01)
-    - Hybrid vs. TF-IDF : ?MRR = +0.167, p = 0.0023 (statistically significant, ? = 0.01)
-    - Hybrid vs. Dense  : ?MRR = +0.040, p = 0.2474 (not statistically significant at ? = 0.05)
+  Paired Two-Sided Permutation Tests (primary; H1: delta != 0; 10,000 resamples, seed=1):
+    - Dense vs. TF-IDF  : dMRR = +0.127, p = 0.0041 (significant at alpha = 0.01)
+    - Hybrid vs. TF-IDF : dMRR = +0.167, p = 0.0041 (significant at alpha = 0.01)
+    - Hybrid vs. Dense  : dMRR = +0.040, p = 0.4955 (not significant at alpha = 0.05)
+
+  Paired One-Sided Permutation Tests (secondary; H1: delta > 0; 10,000 resamples, seed=1):
+    - Dense vs. TF-IDF  : p = 0.0023
+    - Hybrid vs. TF-IDF : p = 0.0023
+    - Hybrid vs. Dense  : p = 0.2474
+  Note: P@5 = 1.000 for both dense and hybrid is a ceiling effect; P@5 cannot separate them.
 
 -------------------------------------------------------------------------
  [TABLE 2] RETRIEVAL SIGNAL ABLATION STUDY (Leave-One-Out)               
