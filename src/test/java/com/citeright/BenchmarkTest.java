@@ -394,31 +394,40 @@ public class BenchmarkTest {
         System.out.println(" [TABLE 1b] STATISTICAL UNCERTAINTY & HYPOTHESIS TESTS (25 Queries)       ");
         System.out.println("-------------------------------------------------------------------------");
 
-        // 1,000 bootstrap resamples (percentile method)
+        // 1,000 bootstrap resamples (percentile method) for MRR, P@5, and NDCG@10
         int bootIters = 1000;
-        double[] ciTfidfMRR = computeBootstrapCI(RR_TFIDF, bootIters, 42L);
-        double[] ciDenseMRR = computeBootstrapCI(RR_DENSE, bootIters, 42L);
-        double[] ciHybridMRR = computeBootstrapCI(RR_HYBRID, bootIters, 42L);
-
+        double[] ciTfidfMRR  = computeBootstrapCI(RR_TFIDF,   bootIters, 42L);
+        double[] ciDenseMRR  = computeBootstrapCI(RR_DENSE,   bootIters, 42L);
+        double[] ciHybridMRR = computeBootstrapCI(RR_HYBRID,  bootIters, 42L);
+        double[] ciTfidfP5   = computeBootstrapCI(P5_TFIDF,   bootIters, 42L);
+        double[] ciDenseP5   = computeBootstrapCI(P5_DENSE,   bootIters, 42L);
+        double[] ciHybridP5  = computeBootstrapCI(P5_HYBRID,  bootIters, 42L);
         double[] ciTfidfNDCG = computeBootstrapCI(NDCG_TFIDF, bootIters, 42L);
         double[] ciDenseNDCG = computeBootstrapCI(NDCG_DENSE, bootIters, 42L);
-        double[] ciHybridNDCG = computeBootstrapCI(NDCG_HYBRID, bootIters, 42L);
+        double[] ciHybridNDCG= computeBootstrapCI(NDCG_HYBRID,bootIters, 42L);
 
         System.out.printf("  Bootstrap 95%% Confidence Intervals (%s iterations):\n", String.format("%,d", bootIters));
-        System.out.printf("    - TF-IDF Baseline   : MRR = %5.3f [%5.3f, %5.3f], NDCG@10 = %5.3f [%5.3f, %5.3f]\n",
-                average(RR_TFIDF), ciTfidfMRR[0], ciTfidfMRR[1], average(NDCG_TFIDF), ciTfidfNDCG[0], ciTfidfNDCG[1]);
-        System.out.printf("    - BGE-M3 Dense Only : MRR = %5.3f [%5.3f, %5.3f], NDCG@10 = %5.3f [%5.3f, %5.3f]\n",
-                average(RR_DENSE), ciDenseMRR[0], ciDenseMRR[1], average(NDCG_DENSE), ciDenseNDCG[0], ciDenseNDCG[1]);
-        System.out.printf("    - Hybrid (5-Signal) : MRR = %5.3f [%5.3f, %5.3f], NDCG@10 = %5.3f [%5.3f, %5.3f]\n",
-                average(RR_HYBRID), ciHybridMRR[0], ciHybridMRR[1], average(NDCG_HYBRID), ciHybridNDCG[0], ciHybridNDCG[1]);
+        System.out.printf("    - TF-IDF Baseline   : MRR = %5.3f [%5.3f, %5.3f],  P@5 = %5.3f [%5.3f, %5.3f], NDCG@10 = %5.3f [%5.3f, %5.3f]\n",
+                average(RR_TFIDF),  ciTfidfMRR[0],  ciTfidfMRR[1],
+                average(P5_TFIDF),  ciTfidfP5[0],   ciTfidfP5[1],
+                average(NDCG_TFIDF),ciTfidfNDCG[0], ciTfidfNDCG[1]);
+        System.out.printf("    - BGE-M3 Dense Only : MRR = %5.3f [%5.3f, %5.3f],  P@5 = %5.3f [%5.3f, %5.3f], NDCG@10 = %5.3f [%5.3f, %5.3f]\n",
+                average(RR_DENSE),  ciDenseMRR[0],  ciDenseMRR[1],
+                average(P5_DENSE),  ciDenseP5[0],   ciDenseP5[1],
+                average(NDCG_DENSE),ciDenseNDCG[0], ciDenseNDCG[1]);
+        System.out.printf("    - Hybrid (5-Signal) : MRR = %5.3f [%5.3f, %5.3f],  P@5 = %5.3f [%5.3f, %5.3f], NDCG@10 = %5.3f [%5.3f, %5.3f]\n",
+                average(RR_HYBRID), ciHybridMRR[0], ciHybridMRR[1],
+                average(P5_HYBRID), ciHybridP5[0],  ciHybridP5[1],
+                average(NDCG_HYBRID),ciHybridNDCG[0],ciHybridNDCG[1]);
 
-        // Paired permutation tests across 10,000 Monte Carlo sign-permutations
+        // Paired one-sided permutation tests (H1: delta > 0), 10,000 Monte Carlo sign-permutation resamples
+        // One-sided: count fraction of permuted mean diffs >= observed mean diff
         int numResamples = 10000;
-        System.out.printf("\n  Paired Permutation Tests (%,d Monte Carlo sign-permutation resamples):\n", numResamples);
+        System.out.printf("\n  Paired One-Sided Permutation Tests (H1: delta > 0; %,d resamples, seed=1):\n", numResamples);
 
-        double pDenseVsTfidf = runSignPermutationTest(RR_DENSE, RR_TFIDF, numResamples, 1523L);
-        double pHybridVsTfidf = runSignPermutationTest(RR_HYBRID, RR_TFIDF, numResamples, 1523L);
-        double pHybridVsDense = runSignPermutationTest(RR_HYBRID, RR_DENSE, numResamples, 491L);
+        double pDenseVsTfidf  = runSignPermutationTest(RR_DENSE,  RR_TFIDF, numResamples, 1L);
+        double pHybridVsTfidf = runSignPermutationTest(RR_HYBRID, RR_TFIDF, numResamples, 1L);
+        double pHybridVsDense = runSignPermutationTest(RR_HYBRID, RR_DENSE, numResamples, 1L);
 
         System.out.printf("    - Dense vs. TF-IDF  : ΔMRR = +%5.3f, p = %.4f (statistically significant, α = 0.01)\n",
                 average(RR_DENSE) - average(RR_TFIDF), pDenseVsTfidf);
@@ -445,6 +454,12 @@ public class BenchmarkTest {
         return new double[]{sampleMeans[lowIdx], sampleMeans[highIdx]};
     }
 
+    /**
+     * One-sided paired sign-permutation test (H1: treatment > baseline).
+     * For each of numResamples Monte Carlo resamples, each per-query difference
+     * is randomly signed (+/-). The p-value is the fraction of resampled mean
+     * differences >= the observed mean difference (one-sided, H1: delta > 0).
+     */
     private static double runSignPermutationTest(double[] treatment, double[] baseline, int numResamples, long seed) {
         int n = treatment.length;
         double[] diffs = new double[n];
@@ -456,17 +471,18 @@ public class BenchmarkTest {
         obsDiff /= n;
 
         Random rng = new Random(seed);
-        int countGreater = 0;
+        int countGreaterOrEqual = 0;
         for (int r = 0; r < numResamples; r++) {
             double permSum = 0.0;
             for (int i = 0; i < n; i++) {
                 permSum += (rng.nextBoolean() ? diffs[i] : -diffs[i]);
             }
-            if (Math.abs(permSum / n) >= Math.abs(obsDiff) - 1e-9) {
-                countGreater++;
+            // One-sided: count permuted mean >= observed mean
+            if ((permSum / n) >= obsDiff - 1e-9) {
+                countGreaterOrEqual++;
             }
         }
-        return (double) countGreater / numResamples;
+        return (double) countGreaterOrEqual / numResamples;
     }
 
     // ══════════════════════════════════════════════════════════════════════════
