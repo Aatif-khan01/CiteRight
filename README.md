@@ -17,10 +17,10 @@ When conducting research, managing dozens or hundreds of PDF files across folder
 * **Centralized Library:** Keep all your research papers, journals, conference articles, and books organized in one place.
 * **Built-in PDF Studio:** Read papers, highlight text, draw annotations, and add notes without needing external PDF readers.
 * **Instant Hybrid Search:** Find exact claims, keywords, and topics across your entire document collection in milliseconds.
-* **AI Research Assistant:** Connect your free Google Gemini API key to ask questions grounded directly in your own papers.
+* **AI Research Assistant:** Ask questions grounded in your own papers using a Google Gemini API key (cloud) or a local Ollama model.
 * **Visual Paper Graph:** Explore connections, topic clusters, and relationships between papers on an interactive visual canvas.
 * **1-Click Citations:** Copy properly formatted citations in APA, MLA, IEEE, and Harvard styles instantly to your clipboard.
-* **100% Privacy & Local Storage:** No mandatory accounts, no cloud sync lock-in, and zero tracking. All your database records and PDFs stay on your machine.
+* **Data locality:** No mandatory accounts and no tracking. Your database, PDFs and embeddings are stored on your machine; optional AI features send limited data to Gemini (see section 8).
 
 ---
 
@@ -140,11 +140,16 @@ Whenever you need to cite a paper in your writing:
 
 ---
 
-### 8. Data Privacy, Storage & Backups
+### 8. Data Locality, Storage & Backups
 
-CiteRight is built from the ground up to respect your privacy:
+CiteRight keeps your library on your computer. Some optional AI features send limited data to Google's Gemini API:
 
-* **Zero Cloud Lock-In:** Your papers and annotations are never uploaded to third-party databases.
+* **Stays local:** PDFs, notes, the SQLite database, BGE-M3 embeddings, semantic search, clustering, graph construction and gap discovery.
+* **Relationship inference (Gemini):** paper titles, years and abstracts truncated to 500 characters, in batches of up to 10 papers. Without an API key, a local rule engine is used instead.
+* **AI chat (Gemini):** your question and up to 8 retrieved excerpts from your papers. Selecting a local Ollama model keeps chat on `localhost`, but if Ollama is unavailable and a Gemini key is configured, CiteRight falls back to Gemini.
+* **Extract Evidence (AI):** uses the local BGE-M3 model when it is loaded; otherwise your claim and the paper's abstract go to the configured AI provider. A missing abstract may be fetched from Semantic Scholar using the paper's DOI.
+* **Unpublished work:** titles and abstracts sent to Gemini need not be public if your library contains unpublished manuscripts.
+* **Not encrypted:** the local `library.db` file is not encrypted by CiteRight. Data locality is not a formal privacy guarantee.
 * **Storage Location:** All data is kept in your user folder:
   ```
   C:\Users\<YourUsername>\.citeright\
@@ -160,15 +165,15 @@ CiteRight is built from the ground up to respect your privacy:
 CiteRight includes an automated, self-contained empirical evaluation harness (`BenchmarkTest.java`) and complete recorded benchmark evaluation datasets supporting the empirical claims of the paper (*"CiteRight: A Local-First Framework for Hybrid Scholarly Retrieval and Research Opportunity Discovery"*):
 
 ### Benchmark Datasets (`src/test/resources/benchmark/`)
-* **`retrieval_queries_25.json`**: 25 conceptual queries with ranked document IDs (top 10 retrieved documents per model), query relevance judgments (binary and graded), target known-item document IDs, evaluated Reciprocal Ranks (MRR), Precision@5, NDCG@10, and top-10 relevance vectors across lexical (TF-IDF), dense (BGE-M3), and 5-signal hybrid models.
+* **`retrieval_queries_25.json`**: 25 conceptual queries with ranked document IDs (top 10 retrieved documents per model), binary query relevance judgments (exactly six relevant documents per query), target known-item document IDs, evaluated Reciprocal Ranks (MRR), Precision@5, NDCG@10, and top-10 relevance vectors across lexical (TF-IDF), dense (BGE-M3), and 5-signal hybrid models.
   - *Target MRR:* Reciprocal rank of the primary known-item document ($1 / \text{rank}(D^*)$).
   - *Precision@5:* Fraction of top-5 retrieved documents relevant ($\text{rel} = 1$).
   - *NDCG@10:* Normalized Discounted Cumulative Gain over top 10 positions with logarithmic discount.
-* **`relationship_pairs_50.json`**: 50 verified paper pairs with expert ground-truth relationship labels, Gemini 2.5 Flash predictions, local rule predictions, and confidence scores across 4 relationship types (`SUPPORTS`, `EXTENDS`, `CONTRADICTS`, `METHODOLOGY`). Rule-based local engine achieves Macro-$F_1 = 0.72$ ($\kappa = 0.59$); Gemini achieves Macro-$F_1 = 0.85$ ($\kappa = 0.78$).
+* **`relationship_pairs_50.json`**: 50 paper pairs with relationship labels assigned by the first author (single annotator), Gemini 2.5 Flash predictions, local rule predictions, and confidence scores across 4 relationship types (`SUPPORTS`, `EXTENDS`, `CONTRADICTS`, `METHODOLOGY`). Rule-based local engine achieves Macro-$F_1 = 0.72$ ($\kappa = 0.59$); Gemini achieves Macro-$F_1 = 0.85$ ($\kappa = 0.78$).
 * **`gap_recommendations_20.json`**: 120 candidate gap recommendations across 4 distinct thematic seed domains (20 candidates per module for Random Baseline, Network Centrality, Topic Gap, Temporal Gap, Methodology Transfer, and Interdisciplinary Gap) with method-specific candidate descriptions, relevance annotations, and confidence values.
 
 ### Running the Benchmark Harness
-The benchmark suite runs out-of-the-box on Java 21+ with zero external dependencies:
+The benchmark suite runs on Java 21+ with no external dependencies. **Run it from the repository root**: the data paths are relative, and the harness stops with an error if a data file is missing or incomplete.
 
 ```bash
 # Compile and run directly via Java 21+
@@ -176,9 +181,9 @@ java src/test/java/com/citeright/BenchmarkTest.java
 ```
 
 The harness computes items 1-3 and 5 below from the released files. Items 4 and 6 replay *recorded* values (see notes); the gap candidates (item 6) are manually constructed and manually labelled.
-1. **Runtime Scalability (Table 4):** Measured brute-force cosine query latency (median of 5 trials) on synthetic 1024-d vectors for 100 to 10,000 documents. End-to-end embedding latency, graph-construction time and peak process memory are not measured and are omitted; this benchmark covers synthetic vector search only.
+1. **Runtime Scalability (Table 4):** Measured brute-force cosine query latency (median of 5 trials) on synthetic 1024-d vectors for 100 to 10,000 documents. Values vary between runs; the paper reports the range over four runs on the authors' laptop, one of which is `benchmark_results.txt`. End-to-end embedding latency, graph-construction time and peak process memory are not measured and are omitted; this benchmark covers synthetic vector search only.
 2. **Information Retrieval Quality (Table 1):** Dynamic MRR, P@5, and NDCG@10 from query evaluations.
-3. **Statistical Uncertainty & Significance (Table 1b):** 1,000-resample percentile bootstrap 95% confidence intervals for all three metrics (MRR, P@5, NDCG@10) and paired one-sided Monte Carlo sign-permutation hypothesis tests ($H_1: \Delta > 0$, 10,000 resamples: Dense vs. TF-IDF $p = 0.0023$, Hybrid vs. TF-IDF $p = 0.0023$, Hybrid vs. Dense $p = 0.2474$).
+3. **Statistical Uncertainty & Significance (Table 1b):** 1,000-resample percentile bootstrap 95% confidence intervals for MRR, P@5 and NDCG@10, and paired Monte Carlo sign-permutation tests on per-query reciprocal rank (10,000 resamples, seed 1). Two-sided p-values (primary): Dense vs. TF-IDF $p = 0.0041$, Hybrid vs. TF-IDF $p = 0.0041$, Hybrid vs. Dense $p = 0.4955$. One-sided p-values ($H_1: \Delta > 0$) are also printed: 0.0023, 0.0023, 0.2474. Only MRR is tested. P@5 = 1.000 for dense and hybrid is a ceiling effect. The hybrid-vs-dense difference comes from two queries (Q05, Q20).
 4. **Ranking Signal Ablation (Table 2):** Leave-one-out table printed from *recorded* values; per-signal scores need the 100-paper corpus and BGE-M3 model, which are not released, so it is not recomputed.
 5. **Multi-Relational Classification (Table 3):** 4x4 confusion matrix, Macro-F1, Precision, Recall, and Cohen's Kappa ($\kappa$).
 6. **Research Gap Discovery (Table 5):** Precision@5 and average confidence across all 6 methods, computed from the recorded candidate relevance flags (candidates are not regenerated by the harness).

@@ -99,8 +99,7 @@ public class BenchmarkTest {
         if (qJson != null) {
             parseAndVerifyQueries(qJson);
         } else {
-            initDefaultRetrievalArrays();
-            System.out.println("  ✔ Initialized validated 25 conceptual query evaluation arrays");
+            throw missingFile("retrieval_queries_25.json");
         }
 
         // 2. Relationship pairs dataset
@@ -112,8 +111,7 @@ public class BenchmarkTest {
             parseRelationField(rJson, "rule_prediction", localPred);
             System.out.println("  ✔ Loaded 50 gold-standard paper pairs with annotations & predictions (relationship_pairs_50.json)");
         } else {
-            initDefaultRelationshipArrays();
-            System.out.println("  ✔ Initialized validated 50 paper pair ground-truth and prediction arrays");
+            throw missingFile("relationship_pairs_50.json");
         }
 
         // 3. Gap discovery dataset
@@ -127,11 +125,20 @@ public class BenchmarkTest {
             temporalGaps = parseGapSection(gJson, "temporal_gap");
             methodGaps = parseGapSection(gJson, "methodology_transfer");
             interdiscGaps = parseGapSection(gJson, "interdisciplinary_gap");
+            for (double[][] sec : new double[][][]{randomGaps, centralityGaps, topicGaps, temporalGaps, methodGaps, interdiscGaps}) {
+                if (sec.length != 20) {
+                    throw new IllegalStateException("Expected 20 candidates per gap method but parsed " + sec.length);
+                }
+            }
             System.out.println("  ✔ Loaded 120 candidate recommendations across 4 thematic seeds (gap_recommendations_20.json)");
         } else {
-            initDefaultGapArrays();
-            System.out.println("  ✔ Initialized validated candidate recommendations across 4 thematic seeds");
+            throw missingFile("gap_recommendations_20.json");
         }
+    }
+
+    private static IllegalStateException missingFile(String name) {
+        return new IllegalStateException("Benchmark data file '" + name + "' was not found. Run this harness from the "
+                + "repository root (paths are relative), e.g. `java src/test/java/com/citeright/BenchmarkTest.java`.");
     }
 
     private static String readResourceOrFile(String resourcePath, String filePath) {
@@ -174,9 +181,6 @@ public class BenchmarkTest {
             if (tfidfRanked.size() != 10 || denseRanked.size() != 10 || hybridRanked.size() != 10) {
                 throw new IllegalStateException("Ranked list size mismatch in " + qid);
             }
-            if (tfidfRanked.equals(denseRanked) || denseRanked.equals(hybridRanked) || tfidfRanked.equals(hybridRanked)) {
-                throw new IllegalStateException("Duplicate rankings across methods in " + qid);
-            }
 
             int tRank = tfidfRanked.indexOf(targetId) + 1;
             int dRank = denseRanked.indexOf(targetId) + 1;
@@ -212,6 +216,9 @@ public class BenchmarkTest {
             NDCG_DENSE[idx] = dNDCG;
             NDCG_HYBRID[idx] = hNDCG;
             idx++;
+        }
+        if (idx != 25) {
+            throw new IllegalStateException("Expected 25 queries in retrieval_queries_25.json but parsed " + idx);
         }
         System.out.println("  ✔ Dynamically evaluated & verified 25 conceptual queries from ranked doc lists and judgments (retrieval_queries_25.json)");
     }
@@ -256,7 +263,7 @@ public class BenchmarkTest {
     private static double computeDCG10(List<String> docs, Map<String, Integer> relMap) {
         double dcg = 0.0;
         for (int i = 0; i < Math.min(docs.size(), 10); i++) {
-            int rel = relMap.getOrDefault(docs.get(i), 0);
+            int rel = relMap.getOrDefault(docs.get(i), 0) == 1 ? 1 : 0; // binary, consistent with P@5
             dcg += (double) rel / (Math.log(i + 2) / Math.log(2));
         }
         return dcg;
@@ -265,8 +272,12 @@ public class BenchmarkTest {
     private static void parseRelationField(String json, String field, int[] target) {
         Matcher m = Pattern.compile("\"" + field + "\"\\s*:\\s*\"([^\"]+)\"").matcher(json);
         int idx = 0;
-        while (m.find() && idx < target.length) {
+        while (m.find()) {
+            if (idx >= target.length) throw new IllegalStateException("More than " + target.length + " values for '" + field + "'");
             target[idx++] = classToInt(m.group(1));
+        }
+        if (idx != target.length) {
+            throw new IllegalStateException("Expected " + target.length + " values for '" + field + "' but parsed " + idx);
         }
     }
 
@@ -276,7 +287,7 @@ public class BenchmarkTest {
             case "EXTENDS": return 1;
             case "CONTRADICTS": return 2;
             case "METHODOLOGY": return 3;
-            default: return 0;
+            default: throw new IllegalStateException("Unknown relation label: " + label);
         }
     }
 
@@ -293,103 +304,6 @@ public class BenchmarkTest {
             list.add(new double[]{rel, conf});
         }
         return list.toArray(new double[0][0]);
-    }
-
-    private static void initDefaultRetrievalArrays() {
-        RR_TFIDF = new double[]{
-            1.0, 1.0, 0.5, 1.0, 0.3333, 1.0, 0.5, 1.0, 1.0, 0.5,
-            1.0, 1.0, 0.3333, 0.5, 1.0, 1.0, 0.5, 1.0, 1.0, 0.3333,
-            1.0, 1.0, 1.0, 0.5, 0.3333
-        };
-        RR_DENSE = new double[]{
-            1.0, 1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0,
-            1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5,
-            1.0, 1.0, 1.0, 0.5, 0.5
-        };
-        RR_HYBRID = new double[]{
-            1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
-            1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
-            1.0, 1.0, 1.0, 0.5, 0.5
-        };
-        Arrays.fill(P5_TFIDF, 0, 10, 1.0);
-        Arrays.fill(P5_TFIDF, 10, 25, 0.8);
-        Arrays.fill(P5_DENSE, 1.0);
-        Arrays.fill(P5_HYBRID, 1.0);
-        NDCG_TFIDF = new double[]{
-            0.988, 0.892, 0.892, 0.892, 0.988, 0.892, 0.892, 0.892, 0.988, 0.892,
-            0.775, 0.762, 0.741, 0.762, 0.775, 0.741, 0.701, 0.775, 0.871, 0.741,
-            0.871, 0.762, 0.775, 0.741, 0.836
-        };
-        NDCG_DENSE = new double[]{
-            0.993, 0.892, 0.988, 0.892, 0.993, 0.892, 0.988, 0.892, 0.993, 0.892,
-            0.988, 0.892, 0.993, 0.892, 0.988, 0.892, 0.993, 0.892, 0.988, 0.892,
-            0.993, 0.892, 0.988, 0.892, 0.892
-        };
-        NDCG_HYBRID = new double[]{
-            1.000, 0.993, 0.892, 0.993, 1.000, 0.993, 0.892, 0.993, 1.000, 0.993,
-            0.892, 0.993, 1.000, 0.892, 0.892, 0.993, 1.000, 0.993, 0.892, 0.993,
-            1.000, 0.993, 0.892, 0.892, 0.892
-        };
-    }
-
-    private static void initDefaultRelationshipArrays() {
-        groundTruth = new int[]{
-            0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,
-            1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1,
-            2,2,2,2,2, 2,2,2,2,2,
-            3,3,3,3,3, 3,3,3,3,3
-        };
-        geminiPred = new int[]{
-            0,0,0,0,0, 0,0,0,0,0, 0,0,0,1,1,
-            1,1,1,1,1, 1,1,1,1,1, 1,1,0,0,3,
-            2,2,2,2,2, 2,2,2,0,1,
-            3,3,3,3,3, 3,3,3,3,1
-        };
-        localPred = new int[]{
-            0,0,0,0,0, 0,0,0,0,0, 0,0,1,1,2,
-            1,1,1,1,1, 1,1,1,1,1, 1,0,0,3,3,
-            2,2,2,2,2, 2,2,0,1,1,
-            3,3,3,3,3, 3,3,3,0,1
-        };
-    }
-
-    private static void initDefaultGapArrays() {
-        randomGaps = new double[][]{
-            {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0},
-            {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0},
-            {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0},
-            {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}
-        };
-        centralityGaps = new double[][]{
-            {1.0, 0.0}, {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0},
-            {1.0, 0.0}, {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0},
-            {1.0, 0.0}, {1.0, 0.0}, {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0},
-            {1.0, 0.0}, {1.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}, {0.0, 0.0}
-        };
-        topicGaps = new double[][]{
-            {1.0, 0.85}, {1.0, 0.82}, {1.0, 0.78}, {1.0, 0.75}, {0.0, 0.70},
-            {1.0, 0.86}, {1.0, 0.81}, {1.0, 0.77}, {1.0, 0.74}, {0.0, 0.71},
-            {1.0, 0.84}, {1.0, 0.83}, {1.0, 0.79}, {1.0, 0.76}, {0.0, 0.69},
-            {1.0, 0.85}, {1.0, 0.80}, {1.0, 0.78}, {1.0, 0.75}, {0.0, 0.68}
-        };
-        temporalGaps = new double[][]{
-            {1.0, 0.90}, {1.0, 0.88}, {1.0, 0.85}, {1.0, 0.82}, {1.0, 0.78},
-            {1.0, 0.89}, {1.0, 0.87}, {1.0, 0.84}, {1.0, 0.83}, {0.0, 0.76},
-            {1.0, 0.91}, {1.0, 0.88}, {1.0, 0.85}, {1.0, 0.82}, {0.0, 0.75},
-            {1.0, 0.90}, {1.0, 0.86}, {1.0, 0.84}, {1.0, 0.81}, {0.0, 0.74}
-        };
-        methodGaps = new double[][]{
-            {1.0, 0.80}, {1.0, 0.76}, {1.0, 0.72}, {1.0, 0.68}, {0.0, 0.64},
-            {1.0, 0.79}, {1.0, 0.75}, {1.0, 0.71}, {0.0, 0.67}, {0.0, 0.63},
-            {1.0, 0.81}, {1.0, 0.77}, {1.0, 0.73}, {1.0, 0.69}, {0.0, 0.65},
-            {1.0, 0.80}, {1.0, 0.76}, {1.0, 0.72}, {1.0, 0.68}, {0.0, 0.62}
-        };
-        interdiscGaps = new double[][]{
-            {1.0, 0.78}, {1.0, 0.74}, {1.0, 0.70}, {1.0, 0.65}, {0.0, 0.58},
-            {1.0, 0.77}, {1.0, 0.73}, {1.0, 0.69}, {0.0, 0.64}, {0.0, 0.57},
-            {1.0, 0.79}, {1.0, 0.75}, {1.0, 0.71}, {1.0, 0.66}, {0.0, 0.59},
-            {1.0, 0.78}, {1.0, 0.74}, {1.0, 0.70}, {0.0, 0.65}, {0.0, 0.56}
-        };
     }
 
     // ══════════════════════════════════════════════════════════════════════════
@@ -523,18 +437,34 @@ public class BenchmarkTest {
         // Paired one-sided permutation tests (H1: delta > 0), 10,000 Monte Carlo sign-permutation resamples
         // One-sided: count fraction of permuted mean diffs >= observed mean diff
         int numResamples = 10000;
-        System.out.printf("\n  Paired One-Sided Permutation Tests (H1: delta > 0; %,d resamples, seed=1):\n", numResamples);
 
         double pDenseVsTfidf  = runSignPermutationTest(RR_DENSE,  RR_TFIDF, numResamples, 1L);
         double pHybridVsTfidf = runSignPermutationTest(RR_HYBRID, RR_TFIDF, numResamples, 1L);
         double pHybridVsDense = runSignPermutationTest(RR_HYBRID, RR_DENSE, numResamples, 1L);
 
-        System.out.printf("    - Dense vs. TF-IDF  : ΔMRR = +%5.3f, p = %.4f (statistically significant, α = 0.01)\n",
-                average(RR_DENSE) - average(RR_TFIDF), pDenseVsTfidf);
-        System.out.printf("    - Hybrid vs. TF-IDF : ΔMRR = +%5.3f, p = %.4f (statistically significant, α = 0.01)\n",
-                average(RR_HYBRID) - average(RR_TFIDF), pHybridVsTfidf);
-        System.out.printf("    - Hybrid vs. Dense  : ΔMRR = +%5.3f, p = %.4f (not statistically significant at α = 0.05)\n",
-                average(RR_HYBRID) - average(RR_DENSE), pHybridVsDense);
+        double dDT = average(RR_DENSE) - average(RR_TFIDF);
+        double dHT = average(RR_HYBRID) - average(RR_TFIDF);
+        double dHD = average(RR_HYBRID) - average(RR_DENSE);
+        System.out.printf("\n  Paired Two-Sided Permutation Tests (primary; H1: delta != 0; %,d resamples, seed=1):\n", numResamples);
+        double[] p2 = {
+            runSignPermutationTest(RR_DENSE,  RR_TFIDF, numResamples, 1L, true),
+            runSignPermutationTest(RR_HYBRID, RR_TFIDF, numResamples, 1L, true),
+            runSignPermutationTest(RR_HYBRID, RR_DENSE, numResamples, 1L, true)};
+        System.out.printf("    - Dense vs. TF-IDF  : dMRR = %+5.3f, p = %.4f (%s)\n", dDT, p2[0], significance(p2[0]));
+        System.out.printf("    - Hybrid vs. TF-IDF : dMRR = %+5.3f, p = %.4f (%s)\n", dHT, p2[1], significance(p2[1]));
+        System.out.printf("    - Hybrid vs. Dense  : dMRR = %+5.3f, p = %.4f (%s)\n", dHD, p2[2], significance(p2[2]));
+
+        System.out.printf("\n  Paired One-Sided Permutation Tests (secondary; H1: delta > 0; %,d resamples, seed=1):\n", numResamples);
+        System.out.printf("    - Dense vs. TF-IDF  : p = %.4f\n", pDenseVsTfidf);
+        System.out.printf("    - Hybrid vs. TF-IDF : p = %.4f\n", pHybridVsTfidf);
+        System.out.printf("    - Hybrid vs. Dense  : p = %.4f\n", pHybridVsDense);
+        System.out.println("  Note: P@5 = 1.000 for both dense and hybrid is a ceiling effect; P@5 cannot separate them.");
+    }
+
+    private static String significance(double p) {
+        if (p < 0.01) return "significant at alpha = 0.01";
+        if (p < 0.05) return "significant at alpha = 0.05";
+        return "not significant at alpha = 0.05";
     }
 
     private static double[] computeBootstrapCI(double[] scores, int iterations, long seed) {
@@ -561,6 +491,11 @@ public class BenchmarkTest {
      * differences >= the observed mean difference (one-sided, H1: delta > 0).
      */
     private static double runSignPermutationTest(double[] treatment, double[] baseline, int numResamples, long seed) {
+        return runSignPermutationTest(treatment, baseline, numResamples, seed, false);
+    }
+
+    /** Same test; when twoSided is true the p-value counts |permuted mean| >= |observed mean| (H1: delta != 0). */
+    private static double runSignPermutationTest(double[] treatment, double[] baseline, int numResamples, long seed, boolean twoSided) {
         int n = treatment.length;
         double[] diffs = new double[n];
         double obsDiff = 0.0;
@@ -578,7 +513,8 @@ public class BenchmarkTest {
                 permSum += (rng.nextBoolean() ? diffs[i] : -diffs[i]);
             }
             // One-sided: count permuted mean >= observed mean
-            if ((permSum / n) >= obsDiff - 1e-9) {
+            double permMean = permSum / n;
+            if (twoSided ? Math.abs(permMean) >= Math.abs(obsDiff) - 1e-9 : permMean >= obsDiff - 1e-9) {
                 countGreaterOrEqual++;
             }
         }
