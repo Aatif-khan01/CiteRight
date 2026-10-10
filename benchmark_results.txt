@@ -1,4 +1,4 @@
-﻿[DATASET VERIFICATION] Loading empirical benchmark evaluation data:
+[DATASET VERIFICATION] Loading empirical benchmark evaluation data:
   ? Dynamically evaluated & verified 25 conceptual queries from ranked doc lists and judgments (retrieval_queries_25.json)
   ? Loaded 50 gold-standard paper pairs with annotations & predictions (relationship_pairs_50.json)
   ? Loaded 120 candidate recommendations across 4 thematic seeds (gap_recommendations_20.json)
@@ -10,16 +10,16 @@
  [TABLE 4] RUNTIME PERFORMANCE BENCHMARK (Hardware: Intel Core i5, 16GB) 
 -------------------------------------------------------------------------
   [1/4] Warming up JIT compiler (10,000 vector iterations)... Done.
-  [2/4] Vector Query Latency (1024-dim L2 cosine search):
-        - Query Latency (  100 docs) :  0.17 ms (Reported in Table 4: 0.17 ms)
-        - Query Latency (  500 docs) :  0.76 ms (Reported in Table 4: 0.76 ms)
-        - Query Latency (1,000 docs) :  1.32 ms (Reported in Table 4: 1.32 ms)
-  [3/4] Neural Inference & Clustering Throughput:
-        - Single-document INT8 BGE-M3 embedding latency : 149 ms (ONNX CPU)
-        - Graph construction & Ward clustering (100 docs): 1.49 s (11 clusters)
-  [4/4] Memory Footprint:
-        - Current JVM Heap Footprint : 4 MB
-        - Peak Process Footprint (with ONNX Runtime runtime): 342 MB
+  [2/4] Vector Query Latency (synthetic 1024-dim vectors, brute-force cosine, measured):
+        - Query Latency (   100 docs) :   0.199 ms   | JVM heap after build: 1 MB
+        - Query Latency (   500 docs) :   0.953 ms   | JVM heap after build: 3 MB
+        - Query Latency ( 1,000 docs) :   1.878 ms   | JVM heap after build: 5 MB
+        - Query Latency ( 5,000 docs) :   9.032 ms   | JVM heap after build: 21 MB
+        - Query Latency (10,000 docs) :  21.709 ms   | JVM heap after build: 40 MB
+        (Median of 5 trials; values vary by machine.)
+  [3/4] Not measured: end-to-end embedding latency, graph-construction time and peak
+        process memory were not independently remeasured and are omitted. The figures above
+        are synthetic vector-search workloads, not an end-to-end application benchmark.
 
 -------------------------------------------------------------------------
  [TABLE 1] SEMANTIC RETRIEVAL BENCHMARK (25 Conceptual Queries)          
@@ -46,6 +46,9 @@
 -------------------------------------------------------------------------
  [TABLE 2] RETRIEVAL SIGNAL ABLATION STUDY (Leave-One-Out)               
 -------------------------------------------------------------------------
+  NOTE: RECORDED values from the authors' original runs, NOT recomputed by this
+  harness. Per-signal scores need the 100-paper corpus and BGE-M3 model, which are
+  not part of the public benchmark files.
   Configuration                        | MRR     | NDCG@10 | ? MRR  
   -------------------------------------+---------+---------+--------
   Full Hybrid (5-signal)               |  0.940  |  0.958  |    ---

@@ -415,8 +415,10 @@ public class BenchmarkTest {
         System.out.println("Done.");
 
         // Query latency across corpus sizes
-        int[] docSizes = {100, 500, 1000};
+        // All sizes use synthetic random L2-normalised 1024-d vectors (not the benchmark corpus).
+        int[] docSizes = {100, 500, 1000, 5000, 10000};
         double[] measuredLatencies = new double[docSizes.length];
+        long[] heapMB = new long[docSizes.length];
 
         for (int idx = 0; idx < docSizes.length; idx++) {
             int count = docSizes[idx];
@@ -426,39 +428,43 @@ public class BenchmarkTest {
             }
 
             // Warmup for this size
-            for (int w = 0; w < 200; w++) {
-                for (float[] doc : corpus) cosineSimilarity(queryVec, doc);
+            int warmups = Math.max(5, 20000 / count);
+            for (int w = 0; w < warmups; w++) {
+                for (float[] doc : corpus) SINK += cosineSimilarity(queryVec, doc);
             }
 
-            // Timed measurement over 1,000 repetitions
-            int repetitions = 1000;
-            long start = System.nanoTime();
-            for (int r = 0; r < repetitions; r++) {
-                for (float[] doc : corpus) {
-                    cosineSimilarity(queryVec, doc);
+            // Timed measurement: median of 5 trials; every score feeds SINK so the JIT cannot elide the work
+            int repetitions = Math.max(20, 1_000_000 / count);
+            double[] trials = new double[5];
+            for (int t = 0; t < trials.length; t++) {
+                long start = System.nanoTime();
+                for (int r = 0; r < repetitions; r++) {
+                    for (float[] doc : corpus) {
+                        SINK += cosineSimilarity(queryVec, doc);
+                    }
                 }
+                long totalNanos = System.nanoTime() - start;
+                trials[t] = ((double) totalNanos / 1_000_000.0) / repetitions;
             }
-            long totalNanos = System.nanoTime() - start;
-            measuredLatencies[idx] = ((double) totalNanos / 1_000_000.0) / repetitions;
+            Arrays.sort(trials);
+            measuredLatencies[idx] = trials[trials.length / 2];
+
+            System.gc();
+            try { Thread.sleep(100); } catch (InterruptedException ignored) {}
+            heapMB[idx] = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024);
+            SINK += corpus.size(); // keep corpus reachable until after the heap reading
         }
 
-        System.out.println("  [2/4] Vector Query Latency (1024-dim L2 cosine search):");
-        System.out.printf("        - Query Latency (  100 docs) : %5.2f ms (Reported in Table 4: 0.17 ms)\n", Math.max(0.17, measuredLatencies[0]));
-        System.out.printf("        - Query Latency (  500 docs) : %5.2f ms (Reported in Table 4: 0.76 ms)\n", Math.max(0.76, measuredLatencies[1]));
-        System.out.printf("        - Query Latency (1,000 docs) : %5.2f ms (Reported in Table 4: 1.32 ms)\n", Math.max(1.32, measuredLatencies[2]));
+        System.out.println("  [2/4] Vector Query Latency (synthetic 1024-dim vectors, brute-force cosine, measured):");
+        for (int idx = 0; idx < docSizes.length; idx++) {
+            System.out.printf("        - Query Latency (%,6d docs) : %7.3f ms   | JVM heap after build: %d MB\n",
+                    docSizes[idx], measuredLatencies[idx], heapMB[idx]);
+        }
+        System.out.println("        (Median of 5 trials; values vary by machine.)");
 
-        System.out.println("  [3/4] Neural Inference & Clustering Throughput:");
-        System.out.println("        - Single-document INT8 BGE-M3 embedding latency : 149 ms (ONNX CPU)");
-        System.out.println("        - Graph construction & Ward clustering (100 docs): 1.49 s (11 clusters)");
-
-        // Measure process memory footprint
-        System.gc();
-        try { Thread.sleep(100); } catch (InterruptedException ignored) {}
-        long usedMemoryBytes = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        long usedMB = usedMemoryBytes / (1024 * 1024);
-        System.out.println("  [4/4] Memory Footprint:");
-        System.out.printf("        - Current JVM Heap Footprint : %d MB\n", usedMB);
-        System.out.println("        - Peak Process Footprint (with ONNX Runtime runtime): 342 MB");
+        System.out.println("  [3/4] Not measured: end-to-end embedding latency, graph-construction time and peak");
+        System.out.println("        process memory were not independently remeasured and are omitted. The figures above");
+        System.out.println("        are synthetic vector-search workloads, not an end-to-end application benchmark.");
     }
 
     // ══════════════════════════════════════════════════════════════════════════
@@ -586,6 +592,9 @@ public class BenchmarkTest {
         System.out.println("\n-------------------------------------------------------------------------");
         System.out.println(" [TABLE 2] RETRIEVAL SIGNAL ABLATION STUDY (Leave-One-Out)               ");
         System.out.println("-------------------------------------------------------------------------");
+        System.out.println("  NOTE: RECORDED values from the authors' original runs, NOT recomputed by this");
+        System.out.println("  harness. Per-signal scores need the 100-paper corpus and BGE-M3 model, which are");
+        System.out.println("  not part of the public benchmark files.");
 
         String[][] ablationRows = {
             {"Full Hybrid (5-signal)", "0.940", "0.958", "---"},
@@ -784,6 +793,8 @@ public class BenchmarkTest {
         for (int i = 0; i < dim; i++) v[i] /= norm;
         return v;
     }
+
+    private static volatile float SINK;
 
     private static float cosineSimilarity(float[] a, float[] b) {
         float dot = 0;
