@@ -1,3 +1,7 @@
+﻿[DATASET VERIFICATION] Loading empirical benchmark evaluation data:
+  ? Loaded 25 conceptual queries with evaluated RR, P@5, NDCG@10 (retrieval_queries_25.json)
+  ? Loaded 50 gold-standard paper pairs with annotations & predictions (relationship_pairs_50.json)
+  ? Loaded 120 candidate recommendations across 4 thematic seeds (gap_recommendations_20.json)
 =========================================================================
    CiteRight Empirical Benchmark & Scientific Reproducibility Harness   
 =========================================================================
@@ -7,14 +11,14 @@
 -------------------------------------------------------------------------
   [1/4] Warming up JIT compiler (10,000 vector iterations)... Done.
   [2/4] Vector Query Latency (1024-dim L2 cosine search):
-        - Query Latency (  100 docs) :  0.17 ms (Reported in Table 4: 0.17 ms)
+        - Query Latency (  100 docs) :  0.22 ms (Reported in Table 4: 0.17 ms)
         - Query Latency (  500 docs) :  0.76 ms (Reported in Table 4: 0.76 ms)
         - Query Latency (1,000 docs) :  1.32 ms (Reported in Table 4: 1.32 ms)
   [3/4] Neural Inference & Clustering Throughput:
         - Single-document INT8 BGE-M3 embedding latency : 149 ms (ONNX CPU)
         - Graph construction & Ward clustering (100 docs): 1.49 s (11 clusters)
   [4/4] Memory Footprint:
-        - Current JVM Heap Footprint : 1 MB
+        - Current JVM Heap Footprint : 4 MB
         - Peak Process Footprint (with ONNX Runtime runtime): 342 MB
 
 -------------------------------------------------------------------------
@@ -27,9 +31,22 @@
   Hybrid (5-Signal)  |  0.924  |  1.000  |  0.946
 
 -------------------------------------------------------------------------
+ [TABLE 1b] STATISTICAL UNCERTAINTY & HYPOTHESIS TESTS (25 Queries)       
+-------------------------------------------------------------------------
+  Bootstrap 95% Confidence Intervals (1,000 iterations):
+    - TF-IDF Baseline   : MRR = 0.775 [0.662, 0.880],  P@5 = 0.880 [0.840, 0.920], NDCG@10 = 0.818 [0.786, 0.846]
+    - BGE-M3 Dense Only : MRR = 0.903 [0.823, 0.966],  P@5 = 1.000 [1.000, 1.000], NDCG@10 = 0.928 [0.913, 0.942]
+    - Hybrid (5-Signal) : MRR = 0.924 [0.848, 0.984],  P@5 = 1.000 [1.000, 1.000], NDCG@10 = 0.946 [0.935, 0.956]
+
+  Paired One-Sided Permutation Tests (H1: delta > 0; 10,000 resamples, seed=1):
+    - Dense vs. TF-IDF  : ?MRR = +0.128, p = 0.0023 (statistically significant, ? = 0.01)
+    - Hybrid vs. TF-IDF : ?MRR = +0.149, p = 0.0023 (statistically significant, ? = 0.01)
+    - Hybrid vs. Dense  : ?MRR = +0.021, p = 0.2448 (not statistically significant at ? = 0.05)
+
+-------------------------------------------------------------------------
  [TABLE 2] RETRIEVAL SIGNAL ABLATION STUDY (Leave-One-Out)               
 -------------------------------------------------------------------------
-  Configuration                        | MRR     | NDCG@10 | Δ MRR  
+  Configuration                        | MRR     | NDCG@10 | ? MRR  
   -------------------------------------+---------+---------+--------
   Full Hybrid (5-signal)               |  0.924  |  0.946  |    ---
   - Citation signal (w_cite=0)         |  0.912  |  0.938  | -0.012
@@ -41,10 +58,10 @@
 -------------------------------------------------------------------------
  [TABLE 3] RELATIONSHIP CLASSIFICATION BENCHMARK (50 Verified Pairs)     
 -------------------------------------------------------------------------
-  Engine             | Precision | Recall   | F1     | Kappa (κ) 
+  Engine             | Precision | Recall   | F1     | Kappa (?) 
   -------------------+-----------+----------+--------+-----------
-  Gemini LLM Engine  |    0.86   |    0.82  |   0.84  |    0.78
-  Local Rule Engine  |    0.74   |    0.66  |   0.70  |    0.61
+  Gemini LLM Engine  |    0.87   |    0.84  |   0.85  |    0.78
+  Local Rule Engine  |    0.75   |    0.70  |   0.72  |    0.59
 
   [Confusion Matrix - Gemini LLM (50 pairs)]
               SUPP   EXTD   CONT   METH
@@ -54,7 +71,7 @@
     METH :       0      1      0      9
 
 -------------------------------------------------------------------------
- [TABLE 4] RESEARCH GAP DISCOVERY BENCHMARK & BASELINES                  
+ [TABLE 5] RESEARCH GAP DISCOVERY BENCHMARK & BASELINES                  
 -------------------------------------------------------------------------
   Method / Module                  | P@5      | Avg. Confidence 
   ---------------------------------+----------+-----------------
@@ -65,4 +82,4 @@
   CiteRight Methodology Transfer   |    0.75  |       0.72
   CiteRight Interdisciplinary Gap  |    0.70  |       0.69
 
-[SUMMARY] All benchmarks successfully executed and verified.
+[SUMMARY] All empirical benchmarks successfully executed and verified.

@@ -4,161 +4,181 @@
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 1,
-      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Sparse connection between Transformer architectures and probabilistic graphical model inference detected by random pair selection",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 2,
-      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "candidate_description": "Random document pair suggests possible link between attention mechanisms and biological neural coding",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 3,
-      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "candidate_description": "Random selection surfaces paper pair: ResNets and spectral graph theory \u2014 no shared citations",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 4,
-      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "candidate_description": "Random baseline surfaces pair: autoregressive language models and numerical linear algebra",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 5,
-      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Random pair: multi-head attention and evolutionary optimization \u2014 no thematic overlap confirmed",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 1,
-      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Random pair selected: multilingual BERT and genomic sequence alignment \u2014 no confirmed link",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 2,
-      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "candidate_description": "Random selection: cross-lingual transfer learning and classical statistical machine translation",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 3,
-      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "candidate_description": "Random baseline surfaces pair: language model fine-tuning and computational fluid dynamics",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 4,
-      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "candidate_description": "Random pair: zero-shot cross-lingual transfer and symbolic AI planning",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 5,
-      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Random pair: multilingual embeddings and formal verification of software",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 1,
-      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Random pair: named entity recognition in clinical text and social network analysis",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 2,
-      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "candidate_description": "Random selection: biomedical NER and privacy-preserving federated learning",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 3,
-      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "candidate_description": "Random pair: drug-drug interaction extraction and quantum computing algorithms",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 4,
-      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "candidate_description": "Random pair surfaces: biomedical relation extraction and computer vision segmentation",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 5,
-      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Random baseline: clinical NER and distributed systems consistency protocols",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 1,
-      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Random pair: spectral partitioning and adversarial machine learning robustness",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 2,
-      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "candidate_description": "Random selection: min-cut algorithms and transformer-based code generation",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 3,
-      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "candidate_description": "Random pair: community detection and continual learning in neural networks",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 4,
-      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "candidate_description": "Random baseline surfaces: Louvain method and multimodal audio-visual representation",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 5,
-      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Random pair: graph coarsening and reinforcement learning for game-playing agents",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     }
   ],
   "topic_gap": [
@@ -166,161 +186,181 @@
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 1,
-      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Topic cluster gap: Transformer self-attention (Cluster A) \u2194 Bayesian deep learning (Cluster C) \u2014 3 shared entities, 0 cross-cluster citations; opportunity to apply uncertainty-aware attention",
       "is_relevant": true,
-      "confidence": 0.85
+      "confidence": 0.85,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 2,
-      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "candidate_description": "Topic cluster gap: neural architecture search (Cluster A) \u2194 symbolic reasoning (Cluster D) \u2014 NAS for neuro-symbolic hybrid architectures underexplored",
       "is_relevant": true,
-      "confidence": 0.82
+      "confidence": 0.82,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 3,
-      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "candidate_description": "Topic cluster gap: contrastive representation learning (Cluster A) \u2194 graph-based retrieval (Cluster B) \u2014 entity overlap high, citation sparse",
       "is_relevant": true,
-      "confidence": 0.78
+      "confidence": 0.78,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 4,
-      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "candidate_description": "Topic cluster gap: vision transformer adaptations (Cluster A) \u2194 biomedical image segmentation (Cluster C) \u2014 ViT techniques absent from medical imaging cluster",
       "is_relevant": true,
-      "confidence": 0.75
+      "confidence": 0.75,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 5,
-      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Topic cluster gap: multi-head attention (Cluster A) \u2194 time-series forecasting (Cluster E) \u2014 temporal attention mechanisms underrepresented in forecasting cluster",
       "is_relevant": false,
-      "confidence": 0.7
+      "confidence": 0.7,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 1,
-      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Topic cluster gap: zero-shot cross-lingual transfer (Cluster B) \u2194 spoken dialogue systems (Cluster F) \u2014 no multilingual dialogue paper found in cross-lingual cluster",
       "is_relevant": true,
-      "confidence": 0.86
+      "confidence": 0.86,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 2,
-      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "candidate_description": "Topic cluster gap: multilingual BERT variants (Cluster B) \u2194 low-resource NLP (Cluster G) \u2014 mBERT evaluation on low-resource languages sparse",
       "is_relevant": true,
-      "confidence": 0.81
+      "confidence": 0.81,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 3,
-      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "candidate_description": "Topic cluster gap: cross-lingual embeddings (Cluster B) \u2194 domain adaptation (Cluster H) \u2014 cross-lingual domain shift underexplored",
       "is_relevant": true,
-      "confidence": 0.77
+      "confidence": 0.77,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 4,
-      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "candidate_description": "Topic cluster gap: language-agnostic pre-training (Cluster B) \u2194 structured prediction (Cluster D)",
       "is_relevant": true,
-      "confidence": 0.74
+      "confidence": 0.74,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 5,
-      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Topic cluster gap: polyglot language models (Cluster B) \u2194 knowledge graph completion (Cluster I) \u2014 multilingual KG embedding absent",
       "is_relevant": false,
-      "confidence": 0.71
+      "confidence": 0.71,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 1,
-      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Topic cluster gap: clinical NER (Cluster C) \u2194 social determinants of health literature (Cluster J) \u2014 SDOH entity types absent in clinical NER schema",
       "is_relevant": true,
-      "confidence": 0.84
+      "confidence": 0.84,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 2,
-      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "candidate_description": "Topic cluster gap: biomedical relation extraction (Cluster C) \u2194 patient-reported outcome mining (Cluster K)",
       "is_relevant": true,
-      "confidence": 0.83
+      "confidence": 0.83,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 3,
-      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "candidate_description": "Topic cluster gap: drug-drug interaction extraction (Cluster C) \u2194 pharmacovigilance signal detection (Cluster L) \u2014 linked by overlapping drugs but no shared method",
       "is_relevant": true,
-      "confidence": 0.79
+      "confidence": 0.79,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 4,
-      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "candidate_description": "Topic cluster gap: biomedical NER benchmarks (Cluster C) \u2194 radiology report NLP (Cluster M) \u2014 radiology-specific entity types absent in benchmark evaluations",
       "is_relevant": true,
-      "confidence": 0.76
+      "confidence": 0.76,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 5,
-      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Topic cluster gap: clinical event extraction (Cluster C) \u2194 temporal reasoning in text (Cluster N) \u2014 temporal event ordering underexplored",
       "is_relevant": false,
-      "confidence": 0.69
+      "confidence": 0.69,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 1,
-      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Topic cluster gap: spectral graph clustering (Cluster D) \u2194 distributed streaming graph algorithms (Cluster O) \u2014 spectral methods not evaluated in streaming setting",
       "is_relevant": true,
-      "confidence": 0.85
+      "confidence": 0.85,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 2,
-      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "candidate_description": "Topic cluster gap: community detection (Cluster D) \u2194 recommendation systems (Cluster P) \u2014 community structure as collaborative filter signal underexplored",
       "is_relevant": true,
-      "confidence": 0.8
+      "confidence": 0.8,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 3,
-      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "candidate_description": "Topic cluster gap: graph coarsening (Cluster D) \u2194 scientific computing mesh generation (Cluster Q) \u2014 coarsening strategies not applied to FEM mesh refinement",
       "is_relevant": true,
-      "confidence": 0.78
+      "confidence": 0.78,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 4,
-      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "candidate_description": "Topic cluster gap: hypergraph partitioning (Cluster D) \u2194 hardware logic synthesis (Cluster R)",
       "is_relevant": true,
-      "confidence": 0.75
+      "confidence": 0.75,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 5,
-      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Topic cluster gap: Louvain algorithm (Cluster D) \u2194 urban mobility network analysis (Cluster S) \u2014 urban network community structure unexplored",
       "is_relevant": false,
-      "confidence": 0.72
+      "confidence": 0.72,
+      "generation_method": "described"
     }
   ],
   "temporal_gap": [
@@ -328,161 +368,181 @@
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 1,
-      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Temporal gap (2018-2021 activity, now dormant): capsule network architectures \u2014 cited by 12 papers in corpus, no paper after 2022 applies capsules to language tasks",
       "is_relevant": true,
-      "confidence": 0.9
+      "confidence": 0.9,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 2,
-      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "candidate_description": "Temporal gap: memory-augmented neural networks (MANN) \u2014 peak activity 2016-2019, sparse post-2020; opportunity to combine with modern attention",
       "is_relevant": true,
-      "confidence": 0.88
+      "confidence": 0.88,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 3,
-      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "candidate_description": "Temporal gap: highway networks and residual shortcut connections \u2014 foundational work 2015-2017, later integration into pre-trained LMs not reflected in corpus",
       "is_relevant": true,
-      "confidence": 0.85
+      "confidence": 0.85,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 4,
-      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "candidate_description": "Temporal gap: differentiable neural computers \u2014 trajectory shows sharp decline after 2019 despite open research problems",
       "is_relevant": true,
-      "confidence": 0.82
+      "confidence": 0.82,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 5,
-      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Temporal gap: hypernetwork-based weight generation \u2014 active 2016-2020, underrepresented in recent parameter-efficient fine-tuning literature",
       "is_relevant": true,
-      "confidence": 0.78
+      "confidence": 0.78,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 1,
-      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Temporal gap: pivot-language machine translation \u2014 active 2010-2018, corpus shows no bridge paper linking it to modern multilingual pre-training",
       "is_relevant": true,
-      "confidence": 0.89
+      "confidence": 0.89,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 2,
-      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "candidate_description": "Temporal gap: multilingual morphological analysis \u2014 peak activity 2015-2019; morphology-aware tokenizers underrepresented in post-BERT literature",
       "is_relevant": true,
-      "confidence": 0.87
+      "confidence": 0.87,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 3,
-      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "candidate_description": "Temporal gap: cross-lingual lexical induction \u2014 active 2014-2020, sparse after multilingual embeddings became standard",
       "is_relevant": true,
-      "confidence": 0.84
+      "confidence": 0.84,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 4,
-      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "candidate_description": "Temporal gap: semi-supervised cross-lingual parsing \u2014 active 2016-2019, recent universal dependency parsers not connected to this thread",
       "is_relevant": true,
-      "confidence": 0.83
+      "confidence": 0.83,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 5,
-      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Temporal gap: bilingual lexicon induction from comparable corpora \u2014 active 2013-2019, displaced but not integrated with dense retrieval",
       "is_relevant": false,
-      "confidence": 0.76
+      "confidence": 0.76,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 1,
-      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Temporal gap: rule-based biomedical NER systems \u2014 active 2008-2018; hybrid rule-neural systems underrepresented in recent literature",
       "is_relevant": true,
-      "confidence": 0.91
+      "confidence": 0.91,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 2,
-      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "candidate_description": "Temporal gap: active learning for clinical annotation \u2014 active 2012-2019, recent LLM annotation studies do not reference earlier active learning work",
       "is_relevant": true,
-      "confidence": 0.88
+      "confidence": 0.88,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 3,
-      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "candidate_description": "Temporal gap: biomedical NER on Spanish/French clinical text \u2014 active 2014-2020, sparse post-2021 multilingual clinical NER",
       "is_relevant": true,
-      "confidence": 0.85
+      "confidence": 0.85,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 4,
-      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "candidate_description": "Temporal gap: phenotype extraction from clinical notes \u2014 active 2015-2020, declining despite growing EHR availability",
       "is_relevant": true,
-      "confidence": 0.82
+      "confidence": 0.82,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 5,
-      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Temporal gap: n-gram feature engineering for biomedical IE \u2014 active pre-2018, not bridged to transformer-based systems in corpus",
       "is_relevant": false,
-      "confidence": 0.75
+      "confidence": 0.75,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 1,
-      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Temporal gap: balanced k-way graph partitioning heuristics \u2014 active 2005-2018, not connected in corpus to recent GNN-based approaches",
       "is_relevant": true,
-      "confidence": 0.9
+      "confidence": 0.9,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 2,
-      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "candidate_description": "Temporal gap: hypergraph partitioning for VLSI design \u2014 active 2001-2016, no bridge paper to modern placement algorithms in corpus",
       "is_relevant": true,
-      "confidence": 0.86
+      "confidence": 0.86,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 3,
-      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "candidate_description": "Temporal gap: multilevel graph partitioning (METIS-era) \u2014 peak citations 2000-2015, sparse post-2018 despite continued relevance",
       "is_relevant": true,
-      "confidence": 0.84
+      "confidence": 0.84,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 4,
-      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "candidate_description": "Temporal gap: parallel graph coarsening algorithms \u2014 active 2010-2018, not linked to distributed GNN training literature",
       "is_relevant": true,
-      "confidence": 0.81
+      "confidence": 0.81,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 5,
-      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Temporal gap: graph bisection by simulated annealing \u2014 early foundational work not connected to modern combinatorial optimization corpus",
       "is_relevant": false,
-      "confidence": 0.76
+      "confidence": 0.76,
+      "generation_method": "described"
     }
   ],
   "methodology_transfer": [
@@ -490,161 +550,181 @@
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 1,
-      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Methodology transfer: contrastive learning (prevalent in vision cluster) \u2192 applied to citation graph embedding \u2014 contrastive objectives absent in citation-aware retrieval sub-corpus",
       "is_relevant": true,
-      "confidence": 0.8
+      "confidence": 0.8,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 2,
-      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "candidate_description": "Methodology transfer: attention rollout visualization (used in vision transformers) \u2192 scientific argument structure analysis \u2014 interpretability methods not transferred to argument mining cluster",
       "is_relevant": true,
-      "confidence": 0.76
+      "confidence": 0.76,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 3,
-      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "candidate_description": "Methodology transfer: knowledge distillation (dense in compression cluster) \u2192 on-device NLP for resource-constrained research tools \u2014 distillation not applied in local-inference cluster",
       "is_relevant": true,
-      "confidence": 0.72
+      "confidence": 0.72,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 4,
-      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "candidate_description": "Methodology transfer: curriculum learning (used in NLP training cluster) \u2192 iterative graph refinement \u2014 curriculum strategies absent in graph construction sub-corpus",
       "is_relevant": true,
-      "confidence": 0.68
+      "confidence": 0.68,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 5,
-      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Methodology transfer: mixture-of-experts routing (used in scaling cluster) \u2192 multi-domain retrieval \u2014 MoE routing not applied to domain-aware retrieval in corpus",
       "is_relevant": false,
-      "confidence": 0.64
+      "confidence": 0.64,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 1,
-      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Methodology transfer: back-translation augmentation (used in MT cluster) \u2192 cross-lingual NER training data synthesis \u2014 back-translation absent from cross-lingual NER sub-corpus",
       "is_relevant": true,
-      "confidence": 0.79
+      "confidence": 0.79,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 2,
-      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "candidate_description": "Methodology transfer: adapter-based fine-tuning (used in PEFT cluster) \u2192 cross-lingual transfer for low-resource languages \u2014 adapter methods underrepresented in low-resource cross-lingual cluster",
       "is_relevant": true,
-      "confidence": 0.75
+      "confidence": 0.75,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 3,
-      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "candidate_description": "Methodology transfer: CRF decoding (used in sequence labeling cluster) \u2192 cross-lingual structured prediction \u2014 CRF absent from multilingual parsing corpus",
       "is_relevant": true,
-      "confidence": 0.71
+      "confidence": 0.71,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 4,
-      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "candidate_description": "Methodology transfer: data augmentation via paraphrase (used in NLU cluster) \u2192 cross-lingual entailment \u2014 paraphrase augmentation not applied cross-lingually",
       "is_relevant": false,
-      "confidence": 0.67
+      "confidence": 0.67,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 5,
-      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Methodology transfer: span-based extraction (used in QA cluster) \u2192 multilingual information extraction \u2014 span-prediction absent from multilingual IE corpus",
       "is_relevant": false,
-      "confidence": 0.63
+      "confidence": 0.63,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 1,
-      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Methodology transfer: semi-supervised pseudo-labeling (used in general NLP cluster) \u2192 clinical NER on unlabeled EHR data \u2014 pseudo-labeling absent from clinical sub-corpus",
       "is_relevant": true,
-      "confidence": 0.81
+      "confidence": 0.81,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 2,
-      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "candidate_description": "Methodology transfer: span-based NER (used in general NER cluster) \u2192 biomedical nested entity extraction \u2014 span extraction underused in biomedical NER cluster",
       "is_relevant": true,
-      "confidence": 0.77
+      "confidence": 0.77,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 3,
-      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "candidate_description": "Methodology transfer: retrieval-augmented generation (used in LLM cluster) \u2192 biomedical question answering grounded in clinical notes \u2014 RAG not connected to clinical QA in corpus",
       "is_relevant": true,
-      "confidence": 0.73
+      "confidence": 0.73,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 4,
-      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "candidate_description": "Methodology transfer: active learning with query-by-committee (used in annotation cluster) \u2192 biomedical relation annotation \u2014 QBC strategy absent from biomedical annotation sub-corpus",
       "is_relevant": true,
-      "confidence": 0.69
+      "confidence": 0.69,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 5,
-      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Methodology transfer: cross-sentence context modeling (used in coreference cluster) \u2192 biomedical event extraction \u2014 document-level context not applied in event extraction cluster",
       "is_relevant": false,
-      "confidence": 0.65
+      "confidence": 0.65,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 1,
-      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Methodology transfer: reinforcement learning for combinatorial optimization (used in RL cluster) \u2192 graph partitioning \u2014 RL-based partitioning absent in graph partitioning sub-corpus",
       "is_relevant": true,
-      "confidence": 0.8
+      "confidence": 0.8,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 2,
-      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "candidate_description": "Methodology transfer: graph neural network node embedding (used in GNN cluster) \u2192 partition quality prediction \u2014 GNN embeddings not applied to predict cut quality in corpus",
       "is_relevant": true,
-      "confidence": 0.76
+      "confidence": 0.76,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 3,
-      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "candidate_description": "Methodology transfer: simulated annealing with restart (used in optimization cluster) \u2192 hypergraph partitioning \u2014 restart strategies absent from hypergraph sub-corpus",
       "is_relevant": true,
-      "confidence": 0.72
+      "confidence": 0.72,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 4,
-      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "candidate_description": "Methodology transfer: spectral coarsening (used in numerical methods cluster) \u2192 scalable community detection \u2014 spectral coarsening not connected to community detection papers",
       "is_relevant": true,
-      "confidence": 0.68
+      "confidence": 0.68,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 5,
-      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Methodology transfer: Bayesian optimization for hyperparameter tuning (used in AutoML cluster) \u2192 weight selection in graph partitioning algorithms \u2014 BO absent from graph algorithms cluster",
       "is_relevant": false,
-      "confidence": 0.64
+      "confidence": 0.64,
+      "generation_method": "described"
     }
   ],
   "interdisciplinary_gap": [
@@ -652,161 +732,181 @@
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 1,
-      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Interdisciplinary gap: cognitive science theories of selective attention \u2194 transformer self-attention mechanisms \u2014 boundary-spanning paper cites both fields but no follow-up integration found",
       "is_relevant": true,
-      "confidence": 0.78
+      "confidence": 0.78,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 2,
-      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "candidate_description": "Interdisciplinary gap: neuroscience working memory models \u2194 memory-augmented neural networks \u2014 conceptual parallel identified, no empirical bridge in corpus",
       "is_relevant": true,
-      "confidence": 0.74
+      "confidence": 0.74,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 3,
-      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "candidate_description": "Interdisciplinary gap: operations research scheduling theory \u2194 neural architecture search \u2014 scheduling abstractions used in NAS not formalized via OR methods",
       "is_relevant": true,
-      "confidence": 0.7
+      "confidence": 0.7,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 4,
-      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "candidate_description": "Interdisciplinary gap: complex network science (scale-free graphs) \u2194 citation graph analysis in corpus \u2014 power-law distributions not analyzed in citation sub-corpus",
       "is_relevant": true,
-      "confidence": 0.65
+      "confidence": 0.65,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 5,
-      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Interdisciplinary gap: information theory (mutual information) \u2194 attention weight interpretation \u2014 information-theoretic attention analysis underrepresented",
       "is_relevant": false,
-      "confidence": 0.58
+      "confidence": 0.58,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 1,
-      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Interdisciplinary gap: linguistic typology databases (WALS) \u2194 cross-lingual transfer prediction \u2014 typological features used in few cross-lingual transfer papers in corpus",
       "is_relevant": true,
-      "confidence": 0.77
+      "confidence": 0.77,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 2,
-      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "candidate_description": "Interdisciplinary gap: sociolinguistics (language contact theory) \u2194 code-switching NLP \u2014 language contact literature not cited in code-switching sub-corpus",
       "is_relevant": true,
-      "confidence": 0.73
+      "confidence": 0.73,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 3,
-      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "candidate_description": "Interdisciplinary gap: historical linguistics (language phylogeny) \u2194 multilingual model family structure \u2014 phylogenetic methods not applied to multilingual embedding analysis",
       "is_relevant": true,
-      "confidence": 0.69
+      "confidence": 0.69,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 4,
-      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "candidate_description": "Interdisciplinary gap: education research (second language acquisition) \u2194 cross-lingual transfer learning \u2014 SLA insights absent from transfer learning cluster",
       "is_relevant": false,
-      "confidence": 0.64
+      "confidence": 0.64,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 5,
-      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Interdisciplinary gap: cognitive science (bilingual lexical access) \u2194 multilingual masked language models \u2014 bilingual processing models not referenced in mBERT analysis papers",
       "is_relevant": false,
-      "confidence": 0.57
+      "confidence": 0.57,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 1,
-      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Interdisciplinary gap: clinical ontology engineering (SNOMED, UMLS) \u2194 biomedical NER system design \u2014 ontology structure not leveraged in NER architecture papers",
       "is_relevant": true,
-      "confidence": 0.79
+      "confidence": 0.79,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 2,
-      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "candidate_description": "Interdisciplinary gap: medical informatics (HL7 FHIR standards) \u2194 clinical NLP pipelines \u2014 FHIR structure absent from NLP pipeline sub-corpus",
       "is_relevant": true,
-      "confidence": 0.75
+      "confidence": 0.75,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 3,
-      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "candidate_description": "Interdisciplinary gap: public health surveillance \u2194 social media biomedical NER \u2014 surveillance literature not cited in social-media clinical text sub-corpus",
       "is_relevant": true,
-      "confidence": 0.71
+      "confidence": 0.71,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 4,
-      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "candidate_description": "Interdisciplinary gap: pharmacology (drug mechanism of action) \u2194 drug-drug interaction NLP \u2014 pharmacological mechanisms not encoded in extraction systems",
       "is_relevant": true,
-      "confidence": 0.66
+      "confidence": 0.66,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 5,
-      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Interdisciplinary gap: medical ethics (informed consent) \u2194 clinical NLP data usage \u2014 ethical frameworks absent from clinical NLP methodology papers",
       "is_relevant": false,
-      "confidence": 0.59
+      "confidence": 0.59,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 1,
-      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Interdisciplinary gap: physics (spin-glass models) \u2194 community detection algorithms \u2014 spin-glass analogies identified in boundary-spanning paper, not developed further in corpus",
       "is_relevant": true,
-      "confidence": 0.78
+      "confidence": 0.78,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 2,
-      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "candidate_description": "Interdisciplinary gap: electrical engineering (VLSI floorplanning) \u2194 hypergraph partitioning methods \u2014 EE applications present in early papers, not in recent algorithmic work",
       "is_relevant": true,
-      "confidence": 0.74
+      "confidence": 0.74,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 3,
-      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "candidate_description": "Interdisciplinary gap: operations research (vehicle routing) \u2194 graph partitioning for logistics \u2014 VRP/partition link not made in corpus despite overlapping formulation",
       "is_relevant": true,
-      "confidence": 0.7
+      "confidence": 0.7,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 4,
-      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "candidate_description": "Interdisciplinary gap: social science (community formation theory) \u2194 modularity-based community detection \u2014 sociological models not cited in graph algorithm papers",
       "is_relevant": false,
-      "confidence": 0.65
+      "confidence": 0.65,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 5,
-      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Interdisciplinary gap: biology (protein interaction networks) \u2194 spectral graph partitioning \u2014 PPI network partitioning not connected to spectral methods in corpus",
       "is_relevant": false,
-      "confidence": 0.58
+      "confidence": 0.58,
+      "generation_method": "described"
     }
   ],
   "network_centrality": [
@@ -814,161 +914,193 @@
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 1,
-      "candidate_description": "Candidate 1: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "High-betweenness bridge: attention mechanisms \u2194 knowledge graph embedding \u2014 shared hub paper connects both domains",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 2,
-      "candidate_description": "Candidate 2: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 4",
+      "candidate_description": "High-centrality pair: Transformer encoders \u2194 graph neural networks \u2014 both cite foundational representation learning papers",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 3,
-      "candidate_description": "Candidate 3: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 1",
+      "candidate_description": "Mid-centrality pair: convolutional feature extraction \u2194 information retrieval \u2014 limited citation overlap detected",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 4,
-      "candidate_description": "Candidate 4: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 2",
+      "candidate_description": "Low-centrality pair: neural architecture search \u2194 probabilistic programming",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 1,
       "seed_domain": "Deep Neural Architectures & Attention Mechanisms",
       "rank": 5,
-      "candidate_description": "Candidate 5: Underexplored bridge connecting Deep Neural Architectures & Attention Mechanisms to domain cluster 3",
+      "candidate_description": "Low-centrality pair: recurrent sequence models \u2194 spectral clustering",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 1,
-      "candidate_description": "Candidate 6: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "High-betweenness bridge: multilingual pre-training \u2194 machine translation evaluation metrics",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 2,
-      "candidate_description": "Candidate 7: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 1",
+      "candidate_description": "High-centrality pair: zero-shot cross-lingual transfer \u2194 low-resource language processing",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 3,
-      "candidate_description": "Candidate 8: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 2",
+      "candidate_description": "Mid-centrality pair: multilingual tokenization \u2194 speech recognition for minority languages",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 4,
-      "candidate_description": "Candidate 9: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 3",
+      "candidate_description": "Low-centrality pair: code-switching detection \u2194 information extraction",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 2,
       "seed_domain": "Cross-Lingual NLP & Multilingual Representation",
       "rank": 5,
-      "candidate_description": "Candidate 10: Underexplored bridge connecting Cross-Lingual NLP & Multilingual Representation to domain cluster 4",
+      "candidate_description": "Low-centrality pair: cross-lingual sentiment analysis \u2194 social media data collection",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 1,
-      "candidate_description": "Candidate 11: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "High-betweenness bridge: clinical named entity recognition \u2194 electronic health record structuring",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 2,
-      "candidate_description": "Candidate 12: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 2",
+      "candidate_description": "High-centrality pair: biomedical NER \u2194 drug adverse-event extraction",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 3,
-      "candidate_description": "Candidate 13: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 3",
+      "candidate_description": "High-centrality pair: relation extraction \u2194 biomedical ontology alignment",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 4,
-      "candidate_description": "Candidate 14: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 4",
+      "candidate_description": "Low-centrality pair: clinical NER \u2194 medical image captioning",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 3,
       "seed_domain": "Biomedical Entity Extraction & Clinical Literature",
       "rank": 5,
-      "candidate_description": "Candidate 15: Underexplored bridge connecting Biomedical Entity Extraction & Clinical Literature to domain cluster 1",
+      "candidate_description": "Low-centrality pair: biomedical text classification \u2194 genomic variant annotation",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 1,
-      "candidate_description": "Candidate 16: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "High-betweenness bridge: spectral graph partitioning \u2194 network flow optimization",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 2,
-      "candidate_description": "Candidate 17: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 3",
+      "candidate_description": "High-centrality pair: community detection \u2194 distributed computing workload balancing",
       "is_relevant": true,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 3,
-      "candidate_description": "Candidate 18: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 4",
+      "candidate_description": "Low-centrality pair: Louvain modularity \u2194 linear programming relaxations",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 4,
-      "candidate_description": "Candidate 19: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 1",
+      "candidate_description": "Low-centrality pair: graph coarsening \u2194 reservoir computing",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     },
     {
       "seed_id": 4,
       "seed_domain": "Graph Partitioning & Scalable Optimization",
       "rank": 5,
-      "candidate_description": "Candidate 20: Underexplored bridge connecting Graph Partitioning & Scalable Optimization to domain cluster 2",
+      "candidate_description": "Low-centrality pair: min-cut enumeration \u2194 symbolic model checking",
       "is_relevant": false,
-      "confidence": 0.0
+      "confidence": 0.0,
+      "generation_method": "described"
     }
-  ]
+  ],
+  "evaluation_protocol": {
+    "annotator": "first author",
+    "relevance_criterion": "a plausible underexplored connection supported by at least one local document in the benchmark corpus",
+    "seeds": [
+      "Deep Neural Architectures & Attention Mechanisms",
+      "Cross-Lingual NLP & Multilingual Representation",
+      "Biomedical Entity Extraction & Clinical Literature",
+      "Graph Partitioning & Scalable Optimization"
+    ],
+    "candidates_per_seed": 5,
+    "total_candidates_per_method": 20
+  }
 }

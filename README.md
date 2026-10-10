@@ -160,25 +160,25 @@ CiteRight is built from the ground up to respect your privacy:
 CiteRight includes an automated, self-contained empirical evaluation harness (`BenchmarkTest.java`) and complete recorded benchmark evaluation datasets supporting the empirical claims of the paper (*"CiteRight: A Local-First Framework for Hybrid Scholarly Retrieval and Research Opportunity Discovery"*):
 
 ### Benchmark Datasets (`src/test/resources/benchmark/`)
-* **`retrieval_queries_25.json`**: 25 conceptual queries with evaluated Reciprocal Ranks, Precision@5, NDCG@10, and top-10 relevance vectors across lexical, dense, and hybrid models.
-* **`relationship_pairs_50.json`**: 50 verified paper pairs with expert ground-truth relationship labels, Gemini LLM predictions, local rule predictions, and confidence scores across 4 relationship types (`SUPPORTS`, `EXTENDS`, `CONTRADICTS`, `METHODOLOGY`).
-* **`gap_recommendations_20.json`**: 120 candidate gap recommendations across 4 distinct thematic seed domains (20 candidates per module for Random Baseline, Network Centrality, Topic Gap, Temporal Gap, Methodology Transfer, and Interdisciplinary Gap) with relevance annotations and confidence values.
+* **`retrieval_queries_25.json`**: 25 conceptual queries with ranked document IDs (top 10 retrieved documents per model), query relevance judgments (graded and binary), target known-item document IDs, evaluated Reciprocal Ranks (MRR), Precision@5, NDCG@10, and top-10 relevance vectors across lexical (TF-IDF), dense (BGE-M3), and 5-signal hybrid models.
+  - *Target MRR:* Reciprocal rank of the primary known-item document ($1 / \text{rank}(D^*)$).
+  - *Precision@5:* Fraction of top-5 retrieved documents topically relevant ($\text{grade} \ge 2$).
+  - *NDCG@10:* Normalized Discounted Cumulative Gain over top 10 positions with logarithmic discount.
+* **`relationship_pairs_50.json`**: 50 verified paper pairs with expert ground-truth relationship labels, Gemini 2.5 Flash predictions, local rule predictions, and confidence scores across 4 relationship types (`SUPPORTS`, `EXTENDS`, `CONTRADICTS`, `METHODOLOGY`). Rule-based local engine achieves Macro-$F_1 = 0.72$ ($\kappa = 0.59$); Gemini achieves Macro-$F_1 = 0.85$ ($\kappa = 0.78$).
+* **`gap_recommendations_20.json`**: 120 candidate gap recommendations across 4 distinct thematic seed domains (20 candidates per module for Random Baseline, Network Centrality, Topic Gap, Temporal Gap, Methodology Transfer, and Interdisciplinary Gap) with method-specific candidate descriptions, relevance annotations, and confidence values.
 
 ### Running the Benchmark Harness
 The benchmark suite runs out-of-the-box on Java 21+ with zero external dependencies:
 
 ```bash
-# Compile the benchmark harness
-javac -d target/classes src/test/java/com/citeright/BenchmarkTest.java
-
-# Run the full empirical verification suite
-java -cp target/classes com.citeright.BenchmarkTest
+# Compile and run directly via Java 21+
+java src/test/java/com/citeright/BenchmarkTest.java
 ```
 
 The harness dynamically calculates:
 1. **Runtime Scalability (Table 4):** L2 cosine similarity query latencies across 100, 500, and 1,000 documents.
 2. **Information Retrieval Quality (Table 1):** Dynamic MRR, P@5, and NDCG@10 from query evaluations.
-3. **Statistical Uncertainty & Significance (Table 1b):** 1,000-resample percentile bootstrap 95% confidence intervals and 10,000 Monte Carlo sign-permutation hypothesis tests.
+3. **Statistical Uncertainty & Significance (Table 1b):** 1,000-resample percentile bootstrap 95% confidence intervals for all three metrics (MRR, P@5, NDCG@10) and paired one-sided Monte Carlo sign-permutation hypothesis tests ($H_1: \Delta > 0$, 10,000 resamples: Dense vs. TF-IDF $p = 0.0023$, Hybrid vs. TF-IDF $p = 0.0023$, Hybrid vs. Dense $p = 0.2448$).
 4. **Ranking Signal Ablation (Table 2):** Leave-one-out marginal contributions of citation, methodology, task, and keyword signals.
 5. **Multi-Relational Classification (Table 3):** 4x4 confusion matrix, Macro-F1, Precision, Recall, and Cohen's Kappa ($\kappa$).
 6. **Research Gap Discovery (Table 5):** Precision@5 and average confidence across all 6 methods against independent baselines.
